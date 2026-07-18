@@ -48,7 +48,7 @@ function convertNodeToMd($: CheerioAPI, node: any, baseUrl?: string): string {
   const el = node as any
   const tag = el.tagName?.toLowerCase() ?? ""
   const children = el.children ?? []
-  const innerText = children.map(c => convertNodeToMd($, c, baseUrl)).join("")
+  const innerText = children.map((c: any) => convertNodeToMd($, c, baseUrl)).join("")
 
   switch (tag) {
     case "h1": return `\n# ${innerText.trim()}\n`
@@ -83,16 +83,16 @@ function convertNodeToMd($: CheerioAPI, node: any, baseUrl?: string): string {
     }
     case "ul": {
       const items = children
-        .filter(c => c.type === "tag" && (c as any).tagName === "li")
-        .map(c => `- ${convertNodeToMd($, c, baseUrl).trim()}`)
+        .filter((c: any) => c.type === "tag" && (c as any).tagName === "li")
+        .map((c: any) => `- ${convertNodeToMd($, c, baseUrl).trim()}`)
         .join("\n")
       return `\n${items}\n`
     }
     case "ol": {
       let idx = 1
       const items = children
-        .filter(c => c.type === "tag" && (c as any).tagName === "li")
-        .map(c => `${idx++}. ${convertNodeToMd($, c, baseUrl).trim()}`)
+        .filter((c: any) => c.type === "tag" && (c as any).tagName === "li")
+        .map((c: any) => `${idx++}. ${convertNodeToMd($, c, baseUrl).trim()}`)
         .join("\n")
       return `\n${items}\n`
     }

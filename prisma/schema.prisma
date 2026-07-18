@@ -1,0 +1,166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Topic {
+  id                   String                @id @default(cuid())
+  title                String
+  slug                 String                @unique
+  module               String
+  description          String?
+  status               String                @default("Not Started")
+  parentId             String?
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  checklists           Checklist[]
+  interviewExperiences InterviewExperience[]
+  interviewQuestions   InterviewQuestion[]
+  notes                Note[]
+  resources            Resource[]
+  tasks                Task[]
+  parent               Topic?                @relation("TopicHierarchy", fields: [parentId], references: [id])
+  subTopics            Topic[]               @relation("TopicHierarchy")
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  content   String
+  topicId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  topic     Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+}
+
+model Checklist {
+  id      String          @id @default(cuid())
+  title   String
+  topicId String
+  topic   Topic           @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  items   ChecklistItem[]
+}
+
+model ChecklistItem {
+  id          String    @id @default(cuid())
+  content     String
+  isCompleted Boolean   @default(false)
+  checklistId String
+  checklist   Checklist @relation(fields: [checklistId], references: [id], onDelete: Cascade)
+}
+
+model Resource {
+  id        String   @id @default(cuid())
+  title     String
+  url       String
+  type      String
+  topicId   String
+  createdAt DateTime @default(now())
+  topic     Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+}
+
+model InterviewQuestion {
+  id                String  @id @default(cuid())
+  question          String
+  idealAnswer       String?
+  alternativeAnswer String?
+  commonMistakes    String?
+  followUpQs        String?
+  difficulty        String  @default("Medium")
+  type              String  @default("General")
+  company           String?
+  frequency         Int     @default(0)
+  topicId           String
+  topic             Topic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  priority    String    @default("Medium")
+  dueDate     DateTime?
+  status      String    @default("Pending")
+  topicId     String?
+  createdAt   DateTime  @default(now())
+  topic       Topic?    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  title         String
+  overview      String?
+  architecture  String?
+  techStack     String?
+  documentation String?
+  deploymentUrl String?
+  githubUrl     String?
+  progress      Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Company {
+  id            String                @id @default(cuid())
+  name          String                @unique
+  logoUrl       String?
+  hiringProcess String?
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+  leetcodeQs    CompanyQuestion[]
+  experiences   InterviewExperience[]
+}
+
+model InterviewExperience {
+  id        String           @id @default(cuid())
+  title     String
+  url       String?
+  content   String?
+  author    String?
+  date      DateTime?
+  companyId String
+  topicId   String?
+  createdAt DateTime         @default(now())
+  topic     Topic?           @relation(fields: [topicId], references: [id])
+  company   Company          @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  rounds    InterviewRound[]
+}
+
+model InterviewRound {
+  id           String              @id @default(cuid())
+  title        String
+  details      String?
+  experienceId String
+  experience   InterviewExperience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+}
+
+model LeetcodeProblem {
+  id         String            @id @default(cuid())
+  title      String
+  url        String            @unique
+  difficulty String
+  tags       String?
+  createdAt  DateTime          @default(now())
+  companies  CompanyQuestion[]
+}
+
+model CompanyQuestion {
+  id                String          @id @default(cuid())
+  frequency         Int             @default(1)
+  timeframe         String?
+  companyId         String
+  leetcodeProblemId String
+  leetcodeProblem   LeetcodeProblem @relation(fields: [leetcodeProblemId], references: [id], onDelete: Cascade)
+  company           Company         @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, leetcodeProblemId])
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+}

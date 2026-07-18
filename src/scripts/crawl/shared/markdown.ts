@@ -33,14 +33,14 @@ export function htmlToMarkdown(html: string, baseUrl?: string): string {
     }
   }
 
-  return convertNodeToMd($, $content[0] as cheerio.AnyNode, baseUrl).trim()
+  return convertNodeToMd($, $content[0] as any, baseUrl).trim()
 }
 
-function convertNodeToMd($: CheerioAPI, node: cheerio.AnyNode, baseUrl?: string): string {
+function convertNodeToMd($: CheerioAPI, node: any, baseUrl?: string): string {
   if (!node) return ""
 
   if (node.type === "text") {
-    return (node as cheerio.Text).data?.replace(/\s+/g, " ") ?? ""
+    return (node as any).data?.replace(/\s+/g, " ") ?? ""
   }
 
   if (node.type !== "tag") return ""

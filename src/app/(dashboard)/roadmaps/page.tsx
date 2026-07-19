@@ -22,7 +22,7 @@ export default async function RoadmapsPage() {
     return acc
   }, {} as Record<string, typeof topics>)
 
-  const moduleOrder = ["DSA", "System Design", "Core CS", "Backend", "Frontend", "AI / ML", "DevOps"]
+  const moduleOrder = ["DSA", "System Design", "Core CS", "Web Dev", "AI / ML", "DevOps"]
   const sortedModules = Object.keys(grouped).sort((a, b) => {
     const idxA = moduleOrder.indexOf(a)
     const idxB = moduleOrder.indexOf(b)

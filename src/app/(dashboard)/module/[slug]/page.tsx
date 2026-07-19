@@ -38,17 +38,19 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
     },
     include: {
       checklists: {
-        include: { items: true }
+        select: { items: { select: { isCompleted: true } } }
       },
       subTopics: {
-        include: {
+        select: {
+          id: true,
+          title: true,
+          slug: true,
+          description: true,
           checklists: {
-            include: { items: true }
+            select: { items: { select: { isCompleted: true } } }
           }
         },
-        orderBy: {
-          id: 'asc'
-        }
+        orderBy: { id: 'asc' }
       }
     },
     orderBy: {

@@ -13,6 +13,8 @@ import {
   CheckCircle2
 } from "lucide-react"
 
+export const revalidate = 60; // Cache for 60 seconds
+
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 

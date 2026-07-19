@@ -16,6 +16,8 @@ const slugToModules: Record<string, string[]> = {
   "devops": ["DevOps"],
 }
 
+export const revalidate = 60; // Cache for 60 seconds
+
 export default async function ModulePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   

@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Map, ChevronRight, BookOpen } from "lucide-react"
 import Link from "next/link"
 
+export const revalidate = 60; // Cache for 60 seconds
+
 export default async function RoadmapsPage() {
   // Fetch all parent topics
   const topics = await prisma.topic.findMany({

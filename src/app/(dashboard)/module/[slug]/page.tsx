@@ -29,6 +29,11 @@ type TopicWithProgress = {
   subTopics: TopicWithProgress[]
 }
 
+type RawTopicWithProgress = Omit<TopicWithProgress, "subTopics" | "totalItems" | "completedItems"> & {
+  totalItems: bigint
+  completedItems: bigint
+}
+
 function TopicGrid({ topics }: { topics: TopicWithProgress[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
@@ -93,44 +98,51 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
     targetModules = [titleCase]
   }
 
-  // Fetch parent topics, checklists, and items sequentially.
-  // Sequential awaits prevent connection pool exhaustion/deadlocks on serverless environments where connection_limit=1.
-  const parentTopics = await db.topic.findMany({
-    where: { module: { in: targetModules }, parentId: null },
-    include: { subTopics: true },
-    orderBy: { title: 'asc' }
-  })
+  // A single database round trip: Postgres does the joins and aggregation.
+  const rawRows = await db.$queryRaw<RawTopicWithProgress[]>(Prisma.sql`
+    SELECT
+      t.id,
+      t.title,
+      t.slug,
+      t.module,
+      t.description,
+      t.status,
+      t."parentId",
+      COUNT(i.id) AS "totalItems",
+      COUNT(i.id) FILTER (WHERE i."isCompleted") AS "completedItems"
+    FROM "Topic" AS t
+    LEFT JOIN "Checklist" AS c ON c."topicId" = t.id
+    LEFT JOIN "ChecklistItem" AS i ON i."checklistId" = c.id
+    WHERE t.module IN (${Prisma.join(targetModules)})
+    GROUP BY t.id
+    ORDER BY t.title ASC
+  `)
 
-  const allChecklists = await db.checklist.findMany({
-    where: { topic: { module: { in: targetModules } } },
-    select: { id: true, topicId: true }
-  })
-
-  const allItems = await db.checklistItem.findMany({
-    where: { checklist: { topic: { module: { in: targetModules } } } },
-    select: { checklistId: true, isCompleted: true }
-  })
-
-  // Map items to checklists
-  const checklistsWithItems = allChecklists.map(checklist => ({
-    ...checklist,
-    items: allItems.filter(item => item.checklistId === checklist.id)
+  // COUNT() returns BigInt from Postgres. Convert before these values enter the
+  // React Server Component tree; BigInt cannot be serialized by Next.js.
+  const allTopics: TopicWithProgress[] = rawRows.map((row) => ({
+    id: row.id,
+    title: row.title,
+    slug: row.slug,
+    module: row.module,
+    description: row.description,
+    status: row.status,
+    parentId: row.parentId,
+    totalItems: Number(row.totalItems),
+    completedItems: Number(row.completedItems),
+    subTopics: [],
   }))
 
-  // Map checklists to topics and calculate totals so we don't pass raw checklists to Client Components
-  const topics = parentTopics.map(topic => {
-    const parentChecklists = checklistsWithItems.filter(c => c.topicId === topic.id)
-    const subTopicChecklists = checklistsWithItems.filter(c => 
-      topic.subTopics.some(sub => sub.id === c.topicId)
-    )
-    const allTopicChecklists = [...parentChecklists, ...subTopicChecklists]
-    
-    return {
-      ...topic,
-      totalItems: allTopicChecklists.reduce((acc, cl) => acc + cl.items.length, 0),
-      completedItems: allTopicChecklists.reduce((acc, cl) => acc + cl.items.filter(i => i.isCompleted).length, 0)
+  const topicsById = new Map(allTopics.map((topic) => [topic.id, topic]))
+  const parentTopics = allTopics.filter((topic) => topic.parentId === null)
+
+  for (const topic of allTopics) {
+    if (topic.parentId) {
+      topicsById.get(topic.parentId)?.subTopics.push(topic)
     }
-  })
+  }
+
+  const topics = parentTopics
 
   const moduleName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
 

@@ -25,6 +25,8 @@ model Topic {
   tasks                Task[]
   parent               Topic?                @relation("TopicHierarchy", fields: [parentId], references: [id])
   subTopics            Topic[]               @relation("TopicHierarchy")
+
+  @@index([module, parentId])
 }
 
 model Note {
@@ -42,6 +44,8 @@ model Checklist {
   topicId String
   topic   Topic           @relation(fields: [topicId], references: [id], onDelete: Cascade)
   items   ChecklistItem[]
+
+  @@index([topicId])
 }
 
 model ChecklistItem {
@@ -50,6 +54,8 @@ model ChecklistItem {
   isCompleted Boolean   @default(false)
   checklistId String
   checklist   Checklist @relation(fields: [checklistId], references: [id], onDelete: Cascade)
+
+  @@index([checklistId])
 }
 
 model Resource {

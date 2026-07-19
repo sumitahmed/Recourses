@@ -93,22 +93,23 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
     targetModules = [titleCase]
   }
 
-  // Fetch all parent topics, checklists, and items in parallel (1 network round-trip instead of 6)
-  const [parentTopics, allChecklists, allItems] = await Promise.all([
-    db.topic.findMany({
-      where: { module: { in: targetModules }, parentId: null },
-      include: { subTopics: true },
-      orderBy: { title: 'asc' }
-    }),
-    db.checklist.findMany({
-      where: { topic: { module: { in: targetModules } } },
-      select: { id: true, topicId: true }
-    }),
-    db.checklistItem.findMany({
-      where: { checklist: { topic: { module: { in: targetModules } } } },
-      select: { checklistId: true, isCompleted: true }
-    })
-  ])
+  // Fetch parent topics, checklists, and items sequentially.
+  // Sequential awaits prevent connection pool exhaustion/deadlocks on serverless environments where connection_limit=1.
+  const parentTopics = await db.topic.findMany({
+    where: { module: { in: targetModules }, parentId: null },
+    include: { subTopics: true },
+    orderBy: { title: 'asc' }
+  })
+
+  const allChecklists = await db.checklist.findMany({
+    where: { topic: { module: { in: targetModules } } },
+    select: { id: true, topicId: true }
+  })
+
+  const allItems = await db.checklistItem.findMany({
+    where: { checklist: { topic: { module: { in: targetModules } } } },
+    select: { checklistId: true, isCompleted: true }
+  })
 
   // Map items to checklists
   const checklistsWithItems = allChecklists.map(checklist => ({

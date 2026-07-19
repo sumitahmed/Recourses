@@ -9,8 +9,9 @@ const slugToModules: Record<string, string[]> = {
   "core-cs": ["Core CS"],
   "dsa": ["DSA"],
   "system-design": ["System Design"],
-  "backend": ["Backend"],
-  "frontend": ["Frontend"],
+  "web-dev": ["Web Dev", "Backend", "Frontend"],
+  "backend": ["Web Dev", "Backend"], // For backward compatibility with bookmarked links
+  "frontend": ["Web Dev", "Frontend"],
   "ai-ml": ["AI / ML", "AI/ML", "AI"],
   "devops": ["DevOps"],
 }

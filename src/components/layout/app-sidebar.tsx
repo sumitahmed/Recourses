@@ -52,8 +52,7 @@ const navItems = [
     items: [
       { title: "DSA", url: "/module/dsa" },
       { title: "Core CS", url: "/module/core-cs" },
-      { title: "Backend", url: "/module/backend" },
-      { title: "Frontend", url: "/module/frontend" },
+      { title: "Web Dev", url: "/module/web-dev" },
       { title: "System Design", url: "/module/system-design" },
       { title: "AI / ML", url: "/module/ai-ml" },
       { title: "DevOps", url: "/module/devops" },

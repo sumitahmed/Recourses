@@ -43,12 +43,9 @@ export default async function DashboardPage() {
         
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary/10 text-primary mb-2">
-              <Activity className="w-3 h-3 mr-1" /> System Active
-            </div>
-            <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">Welcome back, Sumit.</h1>
+            <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">Welcome back.</h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Your knowledge OS is ready. Dive back into your modules or clear out your pending tasks to maintain momentum.
+              Dive back into your modules or clear out your pending tasks to maintain momentum.
             </p>
           </div>
           <div className="hidden md:flex shrink-0">

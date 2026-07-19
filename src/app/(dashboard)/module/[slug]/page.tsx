@@ -1,7 +1,7 @@
 import { db } from "@/lib/db"
-import { notFound } from "next/navigation"
 import Link from "next/link"
-import { BookOpen, CheckCircle2, ChevronRight, Layers, Circle, LayoutGrid, FileText, Activity } from "lucide-react"
+import { Prisma } from "@prisma/client"
+import { BookOpen, CheckCircle2, ChevronRight, Layers, LayoutGrid, FileText, Activity } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 // Map slugs to actual DB modules/categories
@@ -16,13 +16,78 @@ const slugToModules: Record<string, string[]> = {
   "devops": ["DevOps"],
 }
 
-export const revalidate = 60; // Cache for 60 seconds
+type TopicWithProgress = {
+  id: string
+  title: string
+  slug: string
+  module: string
+  description: string | null
+  status: string
+  parentId: string | null
+  totalItems: number
+  completedItems: number
+  subTopics: TopicWithProgress[]
+}
+
+function TopicGrid({ topics }: { topics: TopicWithProgress[] }) {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      {topics.map((topic) => {
+        const totalItems = topic.totalItems
+        const completedItems = topic.completedItems
+        const progress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0
+        const isMastered = progress === 100 && totalItems > 0
+
+        return (
+          <Link href={`/t/${topic.slug}`} key={topic.id} className="group block h-full">
+            <div className={`flex flex-col h-full p-5 rounded-2xl border transition-all duration-300 shadow-sm
+              ${isMastered 
+                ? 'bg-green-500/5 border-green-500/20 hover:border-green-500/40 hover:bg-green-500/10' 
+                : 'bg-card/40 backdrop-blur-sm border-border/50 hover:border-primary/40 hover:bg-muted/30 hover:shadow-md'
+              }`}
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div className={`p-2 rounded-lg ${isMastered ? 'bg-green-500/20 text-green-500' : 'bg-primary/10 text-primary group-hover:scale-110 transition-transform'}`}>
+                  {isMastered ? <CheckCircle2 className="size-5" /> : <BookOpen className="size-5" />}
+                </div>
+                <ChevronRight className="size-4 text-muted-foreground opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              </div>
+
+              <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors leading-tight">
+                {topic.title}
+              </h3>
+              
+              {topic.description && (
+                <p className="text-xs text-muted-foreground line-clamp-2 mb-4 flex-1">
+                  {topic.description}
+                </p>
+              )}
+              
+              <div className="mt-auto pt-4 border-t border-border/40">
+                <div className="flex items-center justify-between text-[10px] uppercase tracking-wider font-semibold mb-2">
+                  <span className="text-muted-foreground">{completedItems} / {totalItems} tasks</span>
+                  <span className={isMastered ? "text-green-500" : "text-primary"}>{progress}%</span>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-secondary/50 overflow-hidden">
+                  <div 
+                    className={`h-full transition-all duration-500 ease-in-out ${isMastered ? 'bg-green-500' : 'bg-primary'}`}
+                    style={{ width: `${progress}%` }} 
+                  />
+                </div>
+              </div>
+            </div>
+          </Link>
+        )
+      })}
+    </div>
+  )
+}
 
 export default async function ModulePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  
+  const { slug } = await params
+
   let targetModules = slugToModules[slug]
-  
+
   if (!targetModules) {
     const titleCase = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
     targetModules = [titleCase]
@@ -51,83 +116,29 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
     items: allItems.filter(item => item.checklistId === checklist.id)
   }))
 
-  // Map checklists to topics
-  const topicsWithProgress = parentTopics.map(topic => {
-    // Checklists for the parent topic
+  // Map checklists to topics and calculate totals so we don't pass raw checklists to Client Components
+  const topics = parentTopics.map(topic => {
     const parentChecklists = checklistsWithItems.filter(c => c.topicId === topic.id)
-    // Checklists for all subtopics of this parent
     const subTopicChecklists = checklistsWithItems.filter(c => 
       topic.subTopics.some(sub => sub.id === c.topicId)
     )
+    const allTopicChecklists = [...parentChecklists, ...subTopicChecklists]
     
     return {
       ...topic,
-      checklists: [...parentChecklists, ...subTopicChecklists]
+      totalItems: allTopicChecklists.reduce((acc, cl) => acc + cl.items.length, 0),
+      completedItems: allTopicChecklists.reduce((acc, cl) => acc + cl.items.filter(i => i.isCompleted).length, 0)
     }
   })
 
   const moduleName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
 
-  const sectionedTopics = topicsWithProgress.filter(t => t.subTopics.length > 0)
-  const flatTopics = topicsWithProgress.filter(t => t.subTopics.length === 0)
+  const sectionedTopics = topics.filter(t => t.subTopics.length > 0)
+  const flatTopics = topics.filter(t => t.subTopics.length === 0)
 
   // Separate Preparation Sheets from General Topics
   const prepSheets = sectionedTopics.filter(t => t.title.toLowerCase().includes('sheet') || t.title.toLowerCase().includes('neetcode'))
   const generalSectioned = sectionedTopics.filter(t => !(t.title.toLowerCase().includes('sheet') || t.title.toLowerCase().includes('neetcode')))
-
-  // Helper component to render a grid of topics instead of a massive timeline
-  const TopicGrid = ({ topics }: { topics: any[] }) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-      {topics.map((topic, i) => {
-        const totalItems = topic.checklists?.reduce((acc: number, cl: any) => acc + cl.items.length, 0) || 0
-        const completedItems = topic.checklists?.reduce((acc: number, cl: any) => acc + cl.items.filter((item: any) => item.isCompleted).length, 0) || 0
-        const progress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0
-        const isMastered = progress === 100 && totalItems > 0;
-        
-        return (
-          <Link href={`/t/${topic.slug}`} key={topic.id} className="group block h-full">
-            <div className={`flex flex-col h-full p-5 rounded-2xl border transition-all duration-300 shadow-sm
-              ${isMastered 
-                ? 'bg-green-500/5 border-green-500/20 hover:border-green-500/40 hover:bg-green-500/10' 
-                : 'bg-card/40 backdrop-blur-sm border-border/50 hover:border-primary/40 hover:bg-muted/30 hover:shadow-md'
-              }`}
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div className={`p-2 rounded-lg ${isMastered ? 'bg-green-500/20 text-green-500' : 'bg-primary/10 text-primary group-hover:scale-110 transition-transform'}`}>
-                  {isMastered ? <CheckCircle2 className="size-5" /> : <BookOpen className="size-5" />}
-                </div>
-                <ChevronRight className="size-4 text-muted-foreground opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-              </div>
-              
-              <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors leading-tight">
-                {topic.title}
-              </h3>
-              
-              {topic.description && (
-                <p className="text-xs text-muted-foreground line-clamp-2 mb-4 flex-1">
-                  {topic.description}
-                </p>
-              )}
-              
-              {/* Progress Bar */}
-              <div className="mt-auto pt-4 border-t border-border/40">
-                <div className="flex items-center justify-between text-[10px] uppercase tracking-wider font-semibold mb-2">
-                  <span className="text-muted-foreground">{completedItems} / {totalItems} tasks</span>
-                  <span className={isMastered ? "text-green-500" : "text-primary"}>{progress}%</span>
-                </div>
-                <div className="h-1.5 w-full rounded-full bg-secondary/50 overflow-hidden">
-                  <div 
-                    className={`h-full transition-all duration-500 ease-in-out ${isMastered ? 'bg-green-500' : 'bg-primary'}`}
-                    style={{ width: `${progress}%` }} 
-                  />
-                </div>
-              </div>
-            </div>
-          </Link>
-        )
-      })}
-    </div>
-  )
 
   return (
     <div className="mx-auto max-w-6xl space-y-12 p-4 md:p-8 pb-32">

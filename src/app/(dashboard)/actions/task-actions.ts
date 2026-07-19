@@ -2,24 +2,34 @@
 
 import { db as prisma } from "@/lib/db"
 import { revalidatePath } from "next/cache"
+import { isValidRecordId, parseTaskInput } from "@/lib/validation"
 
-export async function addTask(title: string, priority: string = "Medium", dueDate?: string) {
-  if (!title || title.trim() === '') return
+export async function addTask(title: unknown, priority: unknown = "Medium", dueDate?: unknown) {
+  const input = parseTaskInput(title, priority, dueDate)
+  if (!input) return
   
   await prisma.task.create({
     data: {
-      title,
+      title: input.title,
       status: "Pending",
-      priority,
-      dueDate: dueDate ? new Date(dueDate) : null
+      priority: input.priority,
+      dueDate: input.dueDate,
     }
   })
   
   revalidatePath('/')
 }
 
-export async function toggleTaskStatus(taskId: string, currentStatus: string) {
-  const newStatus = currentStatus === "Completed" ? "Pending" : "Completed"
+export async function toggleTaskStatus(taskId: unknown) {
+  if (!isValidRecordId(taskId)) return
+
+  const task = await prisma.task.findUnique({
+    where: { id: taskId },
+    select: { status: true },
+  })
+  if (!task) return
+
+  const newStatus = task.status === "Completed" ? "Pending" : "Completed"
   
   await prisma.task.update({
     where: { id: taskId },
@@ -29,9 +39,11 @@ export async function toggleTaskStatus(taskId: string, currentStatus: string) {
   revalidatePath('/')
 }
 
-export async function deleteTask(taskId: string) {
-  await prisma.task.delete({
-    where: { id: taskId }
+export async function deleteTask(taskId: unknown) {
+  if (!isValidRecordId(taskId)) return
+
+  await prisma.task.deleteMany({
+    where: { id: taskId },
   })
   
   revalidatePath('/')

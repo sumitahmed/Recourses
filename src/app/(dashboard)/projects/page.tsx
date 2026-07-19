@@ -4,6 +4,7 @@ import { Code2, Globe, Plus, Code } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import Link from "next/link"
+import { safeExternalUrl } from "@/lib/safe-url"
 
 export default async function ProjectsPage() {
   const projects = await prisma.project.findMany({
@@ -34,7 +35,11 @@ export default async function ProjectsPage() {
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <Card key={project.id} className="flex flex-col">
+            (() => {
+              const githubUrl = safeExternalUrl(project.githubUrl)
+              const deploymentUrl = safeExternalUrl(project.deploymentUrl)
+
+              return <Card key={project.id} className="flex flex-col">
               <CardHeader>
                 <CardTitle>{project.title}</CardTitle>
                 {project.techStack && (
@@ -56,27 +61,28 @@ export default async function ProjectsPage() {
                 </div>
               </CardContent>
               <CardFooter className="flex gap-2 border-t pt-4">
-                {project.githubUrl && (
-                  <Link href={project.githubUrl} target="_blank" className="flex-1">
+                {githubUrl && (
+                  <Link href={githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
                     <Button variant="outline" size="sm" className="w-full">
                       <Code className="mr-2 h-4 w-4" /> Repo
                     </Button>
                   </Link>
                 )}
-                {project.deploymentUrl && (
-                  <Link href={project.deploymentUrl} target="_blank" className="flex-1">
+                {deploymentUrl && (
+                  <Link href={deploymentUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
                     <Button variant="default" size="sm" className="w-full">
                       <Globe className="mr-2 h-4 w-4" /> Live
                     </Button>
                   </Link>
                 )}
-                {!project.githubUrl && !project.deploymentUrl && (
+                {!githubUrl && !deploymentUrl && (
                   <Button variant="secondary" size="sm" className="w-full" disabled>
                     Draft
                   </Button>
                 )}
               </CardFooter>
-            </Card>
+              </Card>
+            })()
           ))}
         </div>
       )}

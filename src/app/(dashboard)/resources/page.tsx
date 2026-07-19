@@ -3,6 +3,7 @@ import { ExternalLink, PlaySquare, FileText, BookOpen, Code } from "lucide-react
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import { safeExternalUrl } from "@/lib/safe-url"
 
 export default async function ResourcesPage() {
   const resources = await prisma.resource.findMany({
@@ -12,12 +13,17 @@ export default async function ResourcesPage() {
     orderBy: { title: 'asc' }
   })
 
-  // Group by type
-  const grouped = resources.reduce((acc, resource) => {
+  const safeResources = resources.flatMap((resource) => {
+    const url = safeExternalUrl(resource.url)
+    return url ? [{ ...resource, url }] : []
+  })
+
+  // Group only validated external URLs by type.
+  const grouped = safeResources.reduce((acc, resource) => {
     if (!acc[resource.type]) acc[resource.type] = []
     acc[resource.type].push(resource)
     return acc
-  }, {} as Record<string, typeof resources>)
+  }, {} as Record<string, typeof safeResources>)
 
   const getTypeIcon = (type: string) => {
     switch(type) {
@@ -38,7 +44,7 @@ export default async function ResourcesPage() {
         </p>
       </div>
 
-      {resources.length === 0 ? (
+      {safeResources.length === 0 ? (
         <div className="flex flex-col items-center justify-center p-12 border rounded-lg border-dashed bg-muted/10">
           <BookOpen className="h-12 w-12 text-muted-foreground mb-4 opacity-50" />
           <h3 className="text-lg font-medium">No resources found</h3>
@@ -58,7 +64,7 @@ export default async function ResourcesPage() {
               
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {items.map((resource) => (
-                  <Link key={resource.id} href={resource.url} target="_blank" rel="noreferrer">
+                  <Link key={resource.id} href={resource.url} target="_blank" rel="noopener noreferrer">
                     <Card className="h-full hover:border-indigo-500/50 hover:shadow-md transition-all group">
                       <CardHeader className="p-4 pb-2">
                         <div className="flex items-start justify-between gap-4">

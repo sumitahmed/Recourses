@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedTabs, TabProps } from "@/components/ui/animated-tabs"
 import { AnimatedChecklist } from "@/components/ui/animated-checklist"
+import { safeExternalUrl } from "@/lib/safe-url"
 import { 
   BookOpen, 
   CheckSquare, 
@@ -32,6 +33,11 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   })
   
   if (!topic) return notFound()
+
+  const safeResources = topic.resources.flatMap((resource) => {
+    const url = safeExternalUrl(resource.url)
+    return url ? [{ ...resource, url }] : []
+  })
 
   // Calculate overall progress for header
   const totalItems = topic.checklists.reduce((acc, cl) => acc + cl.items.length, 0)
@@ -83,14 +89,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       icon: <LinkIcon />,
       content: (
         <div className="py-6 space-y-6">
-          {topic.resources && topic.resources.length > 0 ? (
+          {safeResources.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {topic.resources.map((resource) => (
+              {safeResources.map((resource) => (
                 <a 
                   key={resource.id} 
                   href={resource.url} 
                   target="_blank" 
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="group flex flex-col p-5 rounded-2xl border border-border/50 bg-card/40 hover:bg-muted/30 hover:border-primary/40 transition-all shadow-sm"
                 >
                   <div className="flex items-center justify-between mb-2">

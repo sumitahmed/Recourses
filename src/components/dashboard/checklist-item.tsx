@@ -15,7 +15,7 @@ export function GlobalChecklistItem({ item }: { item: ChecklistItemProps }) {
 
   const handleToggle = () => {
     startTransition(async () => {
-      await toggleChecklistItem(item.id, item.isCompleted)
+      await toggleChecklistItem(item.id)
     })
   }
 

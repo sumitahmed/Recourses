@@ -41,9 +41,9 @@ export function DashboardTaskList({ tasks }: { tasks: Task[] }) {
     })
   }
 
-  const handleToggle = (taskId: string, currentStatus: string) => {
+  const handleToggle = (taskId: string) => {
     startTransition(async () => {
-      await toggleTaskStatus(taskId, currentStatus)
+      await toggleTaskStatus(taskId)
     })
   }
 
@@ -105,7 +105,7 @@ export function DashboardTaskList({ tasks }: { tasks: Task[] }) {
               }`}
             >
               <button 
-                onClick={() => handleToggle(task.id, task.status)}
+                    onClick={() => handleToggle(task.id)}
                 className={`p-2 rounded-lg transition-colors ${
                   task.status === "Completed" 
                     ? "bg-primary/20 text-primary" 

@@ -34,7 +34,7 @@ export function AnimatedChecklist({ checklists }: { checklists: ChecklistGroup[]
   const toggleItem = async (id: string) => {
     const currentStatus = itemsState[id]
     setItemsState(prev => ({ ...prev, [id]: !currentStatus }))
-    await toggleChecklistItem(id, currentStatus)
+    await toggleChecklistItem(id)
   }
 
   return (

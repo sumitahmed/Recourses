@@ -28,40 +28,48 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
     targetModules = [titleCase]
   }
 
-  // Fetch only parent topics to establish hierarchy
-  const parentTopics = await db.topic.findMany({
-    where: {
-      module: {
-        in: targetModules
-      },
-      parentId: null
-    },
-    include: {
-      checklists: {
-        select: { items: { select: { isCompleted: true } } }
-      },
-      subTopics: {
-        select: {
-          id: true,
-          title: true,
-          slug: true,
-          description: true,
-          checklists: {
-            select: { items: { select: { isCompleted: true } } }
-          }
-        },
-        orderBy: { id: 'asc' }
-      }
-    },
-    orderBy: {
-      title: 'asc'
+  // Fetch all parent topics, checklists, and items in parallel (1 network round-trip instead of 6)
+  const [parentTopics, allChecklists, allItems] = await Promise.all([
+    db.topic.findMany({
+      where: { module: { in: targetModules }, parentId: null },
+      include: { subTopics: true },
+      orderBy: { title: 'asc' }
+    }),
+    db.checklist.findMany({
+      where: { topic: { module: { in: targetModules } } },
+      select: { id: true, topicId: true }
+    }),
+    db.checklistItem.findMany({
+      where: { checklist: { topic: { module: { in: targetModules } } } },
+      select: { checklistId: true, isCompleted: true }
+    })
+  ])
+
+  // Map items to checklists
+  const checklistsWithItems = allChecklists.map(checklist => ({
+    ...checklist,
+    items: allItems.filter(item => item.checklistId === checklist.id)
+  }))
+
+  // Map checklists to topics
+  const topicsWithProgress = parentTopics.map(topic => {
+    // Checklists for the parent topic
+    const parentChecklists = checklistsWithItems.filter(c => c.topicId === topic.id)
+    // Checklists for all subtopics of this parent
+    const subTopicChecklists = checklistsWithItems.filter(c => 
+      topic.subTopics.some(sub => sub.id === c.topicId)
+    )
+    
+    return {
+      ...topic,
+      checklists: [...parentChecklists, ...subTopicChecklists]
     }
   })
 
   const moduleName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
 
-  const sectionedTopics = parentTopics.filter(t => t.subTopics.length > 0)
-  const flatTopics = parentTopics.filter(t => t.subTopics.length === 0)
+  const sectionedTopics = topicsWithProgress.filter(t => t.subTopics.length > 0)
+  const flatTopics = topicsWithProgress.filter(t => t.subTopics.length === 0)
 
   // Separate Preparation Sheets from General Topics
   const prepSheets = sectionedTopics.filter(t => t.title.toLowerCase().includes('sheet') || t.title.toLowerCase().includes('neetcode'))

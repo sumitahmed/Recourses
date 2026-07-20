@@ -1,0 +1,373 @@
+[
+  {
+    "title": "Basic Calculation Tricks",
+    "track": "quant",
+    "slug": "basic-calculation-tricks",
+    "file": "content/quant/basic-calculation-tricks.md",
+    "searchText": "Basic Calculation Tricks quant"
+  },
+  {
+    "title": "Simplification",
+    "track": "quant",
+    "slug": "simplification",
+    "file": "content/quant/simplification.md",
+    "searchText": "Simplification quant"
+  },
+  {
+    "title": "Percentages",
+    "track": "quant",
+    "slug": "percentages",
+    "file": "content/quant/percentages.md",
+    "searchText": "Percentages quant"
+  },
+  {
+    "title": "Simple Interest",
+    "track": "quant",
+    "slug": "simple-interest",
+    "file": "content/quant/simple-interest.md",
+    "searchText": "Simple Interest quant"
+  },
+  {
+    "title": "Compound Interest",
+    "track": "quant",
+    "slug": "compound-interest",
+    "file": "content/quant/compound-interest.md",
+    "searchText": "Compound Interest quant"
+  },
+  {
+    "title": "Ratio & Proportion",
+    "track": "quant",
+    "slug": "ratio-and-proportion",
+    "file": "content/quant/ratio-and-proportion.md",
+    "searchText": "Ratio & Proportion quant"
+  },
+  {
+    "title": "Profit & Loss",
+    "track": "quant",
+    "slug": "profit-and-loss",
+    "file": "content/quant/profit-and-loss.md",
+    "searchText": "Profit & Loss quant"
+  },
+  {
+    "title": "Average",
+    "track": "quant",
+    "slug": "average",
+    "file": "content/quant/average.md",
+    "searchText": "Average quant"
+  },
+  {
+    "title": "Ages",
+    "track": "quant",
+    "slug": "ages",
+    "file": "content/quant/ages.md",
+    "searchText": "Ages quant"
+  },
+  {
+    "title": "Partnership",
+    "track": "quant",
+    "slug": "partnership",
+    "file": "content/quant/partnership.md",
+    "searchText": "Partnership quant"
+  },
+  {
+    "title": "Mixture & Alligation",
+    "track": "quant",
+    "slug": "mixture-and-alligation",
+    "file": "content/quant/mixture-and-alligation.md",
+    "searchText": "Mixture & Alligation quant"
+  },
+  {
+    "title": "Time & Work",
+    "track": "quant",
+    "slug": "time-and-work",
+    "file": "content/quant/time-and-work.md",
+    "searchText": "Time & Work quant"
+  },
+  {
+    "title": "Pipes & Cistern",
+    "track": "quant",
+    "slug": "pipes-and-cistern",
+    "file": "content/quant/pipes-and-cistern.md",
+    "searchText": "Pipes & Cistern quant"
+  },
+  {
+    "title": "Time Speed Distance",
+    "track": "quant",
+    "slug": "time-speed-distance",
+    "file": "content/quant/time-speed-distance.md",
+    "searchText": "Time Speed Distance quant"
+  },
+  {
+    "title": "Trains",
+    "track": "quant",
+    "slug": "trains",
+    "file": "content/quant/trains.md",
+    "searchText": "Trains quant"
+  },
+  {
+    "title": "Boats",
+    "track": "quant",
+    "slug": "boats",
+    "file": "content/quant/boats.md",
+    "searchText": "Boats quant"
+  },
+  {
+    "title": "Number System",
+    "track": "quant",
+    "slug": "number-system",
+    "file": "content/quant/number-system.md",
+    "searchText": "Number System quant"
+  },
+  {
+    "title": "Cyclicity",
+    "track": "quant",
+    "slug": "cyclicity",
+    "file": "content/quant/cyclicity.md",
+    "searchText": "Cyclicity quant"
+  },
+  {
+    "title": "Divisibility",
+    "track": "quant",
+    "slug": "divisibility",
+    "file": "content/quant/divisibility.md",
+    "searchText": "Divisibility quant"
+  },
+  {
+    "title": "HCF & LCM",
+    "track": "quant",
+    "slug": "hcf-and-lcm",
+    "file": "content/quant/hcf-and-lcm.md",
+    "searchText": "HCF & LCM quant"
+  },
+  {
+    "title": "Probability",
+    "track": "quant",
+    "slug": "probability",
+    "file": "content/quant/probability.md",
+    "searchText": "Probability quant"
+  },
+  {
+    "title": "Permutation",
+    "track": "quant",
+    "slug": "permutation",
+    "file": "content/quant/permutation.md",
+    "searchText": "Permutation quant"
+  },
+  {
+    "title": "2D Geometry",
+    "track": "quant",
+    "slug": "2d-geometry",
+    "file": "content/quant/2d-geometry.md",
+    "searchText": "2D Geometry quant"
+  },
+  {
+    "title": "3D Geometry",
+    "track": "quant",
+    "slug": "3d-geometry",
+    "file": "content/quant/3d-geometry.md",
+    "searchText": "3D Geometry quant"
+  },
+  {
+    "title": "Tables",
+    "track": "quant",
+    "slug": "tables",
+    "file": "content/quant/tables.md",
+    "searchText": "Tables quant"
+  },
+  {
+    "title": "Bar Charts",
+    "track": "quant",
+    "slug": "bar-charts",
+    "file": "content/quant/bar-charts.md",
+    "searchText": "Bar Charts quant"
+  },
+  {
+    "title": "Line Charts",
+    "track": "quant",
+    "slug": "line-charts",
+    "file": "content/quant/line-charts.md",
+    "searchText": "Line Charts quant"
+  },
+  {
+    "title": "Pie Charts",
+    "track": "quant",
+    "slug": "pie-charts",
+    "file": "content/quant/pie-charts.md",
+    "searchText": "Pie Charts quant"
+  },
+  {
+    "title": "Mixed Charts",
+    "track": "quant",
+    "slug": "mixed-charts",
+    "file": "content/quant/mixed-charts.md",
+    "searchText": "Mixed Charts quant"
+  },
+  {
+    "title": "Number Series",
+    "track": "reasoning",
+    "slug": "number-series",
+    "file": "content/reasoning/number-series.md",
+    "searchText": "Number Series reasoning"
+  },
+  {
+    "title": "Letter Series",
+    "track": "reasoning",
+    "slug": "letter-series",
+    "file": "content/reasoning/letter-series.md",
+    "searchText": "Letter Series reasoning"
+  },
+  {
+    "title": "Alpha Numeric Series",
+    "track": "reasoning",
+    "slug": "alpha-numeric-series",
+    "file": "content/reasoning/alpha-numeric-series.md",
+    "searchText": "Alpha Numeric Series reasoning"
+  },
+  {
+    "title": "Coding Decoding",
+    "track": "reasoning",
+    "slug": "coding-decoding",
+    "file": "content/reasoning/coding-decoding.md",
+    "searchText": "Coding Decoding reasoning"
+  },
+  {
+    "title": "Distance & Direction",
+    "track": "reasoning",
+    "slug": "distance-and-direction",
+    "file": "content/reasoning/distance-and-direction.md",
+    "searchText": "Distance & Direction reasoning"
+  },
+  {
+    "title": "Syllogism",
+    "track": "reasoning",
+    "slug": "syllogism",
+    "file": "content/reasoning/syllogism.md",
+    "searchText": "Syllogism reasoning"
+  },
+  {
+    "title": "Blood Relations",
+    "track": "reasoning",
+    "slug": "blood-relations",
+    "file": "content/reasoning/blood-relations.md",
+    "searchText": "Blood Relations reasoning"
+  },
+  {
+    "title": "Calendars",
+    "track": "reasoning",
+    "slug": "calendars",
+    "file": "content/reasoning/calendars.md",
+    "searchText": "Calendars reasoning"
+  },
+  {
+    "title": "Cubes",
+    "track": "reasoning",
+    "slug": "cubes",
+    "file": "content/reasoning/cubes.md",
+    "searchText": "Cubes reasoning"
+  },
+  {
+    "title": "Games & Tournament",
+    "track": "reasoning",
+    "slug": "games-and-tournament",
+    "file": "content/reasoning/games-and-tournament.md",
+    "searchText": "Games & Tournament reasoning"
+  },
+  {
+    "title": "Venn Diagram",
+    "track": "reasoning",
+    "slug": "venn-diagram",
+    "file": "content/reasoning/venn-diagram.md",
+    "searchText": "Venn Diagram reasoning"
+  },
+  {
+    "title": "Linear Arrangement",
+    "track": "reasoning",
+    "slug": "linear-arrangement",
+    "file": "content/reasoning/linear-arrangement.md",
+    "searchText": "Linear Arrangement reasoning"
+  },
+  {
+    "title": "Circular Arrangement",
+    "track": "reasoning",
+    "slug": "circular-arrangement",
+    "file": "content/reasoning/circular-arrangement.md",
+    "searchText": "Circular Arrangement reasoning"
+  },
+  {
+    "title": "Ordering Puzzle",
+    "track": "reasoning",
+    "slug": "ordering-puzzle",
+    "file": "content/reasoning/ordering-puzzle.md",
+    "searchText": "Ordering Puzzle reasoning"
+  },
+  {
+    "title": "Stack Puzzle",
+    "track": "reasoning",
+    "slug": "stack-puzzle",
+    "file": "content/reasoning/stack-puzzle.md",
+    "searchText": "Stack Puzzle reasoning"
+  },
+  {
+    "title": "Spotting Errors",
+    "track": "english",
+    "slug": "spotting-errors",
+    "file": "content/english/spotting-errors.md",
+    "searchText": "Spotting Errors english"
+  },
+  {
+    "title": "Synonyms",
+    "track": "english",
+    "slug": "synonyms",
+    "file": "content/english/synonyms.md",
+    "searchText": "Synonyms english"
+  },
+  {
+    "title": "Antonyms",
+    "track": "english",
+    "slug": "antonyms",
+    "file": "content/english/antonyms.md",
+    "searchText": "Antonyms english"
+  },
+  {
+    "title": "Direct Indirect Speech",
+    "track": "english",
+    "slug": "direct-indirect-speech",
+    "file": "content/english/direct-indirect-speech.md",
+    "searchText": "Direct Indirect Speech english"
+  },
+  {
+    "title": "Cloze Test",
+    "track": "english",
+    "slug": "cloze-test",
+    "file": "content/english/cloze-test.md",
+    "searchText": "Cloze Test english"
+  },
+  {
+    "title": "Sentence Improvement",
+    "track": "english",
+    "slug": "sentence-improvement",
+    "file": "content/english/sentence-improvement.md",
+    "searchText": "Sentence Improvement english"
+  },
+  {
+    "title": "One Word Substitution",
+    "track": "english",
+    "slug": "one-word-substitution",
+    "file": "content/english/one-word-substitution.md",
+    "searchText": "One Word Substitution english"
+  },
+  {
+    "title": "Active Passive",
+    "track": "english",
+    "slug": "active-passive",
+    "file": "content/english/active-passive.md",
+    "searchText": "Active Passive english"
+  },
+  {
+    "title": "Reading Comprehension",
+    "track": "english",
+    "slug": "reading-comprehension",
+    "file": "content/english/reading-comprehension.md",
+    "searchText": "Reading Comprehension english"
+  }
+]

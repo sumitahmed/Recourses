@@ -1,0 +1,17 @@
+# Reasoning index
+
+- [Number Series](number-series.md)
+- [Letter Series](letter-series.md)
+- [Alpha Numeric Series](alpha-numeric-series.md)
+- [Coding Decoding](coding-decoding.md)
+- [Distance & Direction](distance-and-direction.md)
+- [Syllogism](syllogism.md)
+- [Blood Relations](blood-relations.md)
+- [Calendars](calendars.md)
+- [Cubes](cubes.md)
+- [Games & Tournament](games-and-tournament.md)
+- [Venn Diagram](venn-diagram.md)
+- [Linear Arrangement](linear-arrangement.md)
+- [Circular Arrangement](circular-arrangement.md)
+- [Ordering Puzzle](ordering-puzzle.md)
+- [Stack Puzzle](stack-puzzle.md)

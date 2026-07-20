@@ -3,6 +3,7 @@
 import * as React from "react"
 import {
   BookOpen,
+  BrainCircuit,
   CheckSquare,
   Code2,
   FolderKanban,
@@ -66,6 +67,7 @@ const navItems = [
       { title: "Projects", url: "/projects", icon: Code2 },
       { title: "Tasks", url: "/tasks", icon: CheckSquare },
       { title: "Placement Prep", url: "/placement", icon: GraduationCap },
+      { title: "Aptitude Prep", url: "/aptitude", icon: BrainCircuit },
       { title: "Interviews", url: "/interviews", icon: MessageSquare },
       { title: "Resources", url: "/resources", icon: BookOpen },
     ],
@@ -92,7 +94,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navItems.slice(0, 2).map((item) => (
+              {navItems.slice(0, 3).map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton render={<Link href={item.url} />} isActive={pathname === item.url}>
                     <item.icon />
@@ -109,7 +111,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupLabel>Knowledge Modules</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navItems[2].items?.map((item) => (
+              {navItems.find(n => n.title === "Knowledge Modules")?.items?.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton render={<Link href={item.url} />} isActive={pathname === item.url}>
                     <span>{item.title}</span>
@@ -125,7 +127,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupLabel>Workspace</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navItems[3].items?.map((item) => (
+              {navItems.find(n => n.title === "Workspace")?.items?.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton render={<Link href={item.url} />} isActive={pathname === item.url}>
                     {'icon' in item && item.icon && <item.icon />}

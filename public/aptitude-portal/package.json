@@ -1,0 +1,5 @@
+{
+  "name": "placement-preparation-portal",
+  "private": true,
+  "scripts": { "generate": "node scripts/generate-content.js" }
+}

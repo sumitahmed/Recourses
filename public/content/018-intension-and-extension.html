@@ -1,0 +1,123 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/8</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h1>Intension, Extension, and Database Concepts</h1>
+<h2>Intension and Extension</h2>
+<p>In database terminology, <strong>Intension</strong> and <strong>Extension</strong> represent two different aspects of data within a database.</p>
+<hr class=line-break>
+<h3>Intension</h3>
+<p>Intension refers to the structure of the database — the schema that defines the format, constraints, and relationships of data within the database. Intension is the static part of the database that remains constant over time, representing the blueprint or design of the database.</p>
+<p><strong>Example:</strong> In a <code>Customer</code> table:</p>
+<ul>
+ <li>Intension includes the table name <code>Customer</code>, column names like <code>Customer_ID</code>, <code>Name</code>, and <code>Address</code>, along with data types and constraints.</li>
+</ul>
+<h3>Extension</h3>
+<p>Extension is the actual data stored in the database at a specific moment. Unlike intension, the extension is dynamic and changes as data is added, modified, or deleted. It represents the state of the database at a given time.</p>
+<p><strong>Example:</strong> In the <code>Customer</code> table:</p>
+<ul>
+ <li>Extension refers to the actual records or rows in the table, such as:</li>
+</ul>
+<br>
+<table>
+ <tbody><tr>
+ <th>Customer_ID</th>
+ <th>Name</th>
+ <th>Address</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>Alice</td>
+ <td>123 Main St</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>Bob</td>
+ <td>456 Oak St</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>Database Schema vs. Database State</h2>
+<p><strong>Database Schema</strong> and <strong>Database State</strong> are fundamental concepts in database design, representing the structure and content of a database.</p>
+<h3>Database Schema</h3>
+<p>The <strong>Database Schema</strong> is the overall structure or design of the database, specifying tables, columns, data types, constraints, and relationships. The schema is usually defined during the database creation phase and does not change frequently.</p>
+<ul>
+ <li><strong>Static Structure:</strong> Schema remains mostly unchanged over time.</li>
+ <li><strong>Defined in DDL:</strong> Created and modified using Data Definition Language (DDL) statements.</li>
+</ul>
+<p><strong>Example:</strong> A Library database schema might include tables like Book, Member, and Loan, with each table’s columns and data types defined.</p>
+<h3>Database State</h3>
+<p>The <strong>Database State</strong> (or instance) is the data stored in the database at a particular time. Unlike the schema, the state is dynamic, as it changes when data is added, updated, or deleted.</p>
+<ul>
+ <li><strong>Dynamic Content:</strong> Changes frequently with database operations.</li>
+ <li><strong>Represents Current Data:</strong> Reflects the current contents of the database at a given moment.</li>
+</ul>
+<p><strong>Example:</strong> The current rows in the Book table at a given time represent the database state, which will change as books are added, loaned, or returned.</p>
+<hr class=line-break>
+<h2>Three-Schema Architecture</h2>
+<p>The <strong>Three-Schema Architecture</strong> is a framework that separates the database structure into three levels, providing a layered approach to database design and independence. This architecture was proposed by the ANSI-SPARC committee to separate user interactions from physical storage, improving data abstraction and flexibility.</p>
+<h3>Levels of Three-Schema Architecture</h3>
+<ul>
+ <li><strong>External Level:</strong> Represents the user’s view of the data, hiding irrelevant details.</li>
+ <li><strong>Conceptual Level:</strong> The middle level, defining the logical structure, including entities, relationships, and constraints.</li>
+ <li><strong>Internal Level:</strong> Describes the physical storage of data, including indexing, file organization, and physical storage structures.</li>
+</ul>
+<h3>Benefits of Three-Schema Architecture</h3>
+<ul>
+ <li><strong>Data Abstraction:</strong> Each level provides a layer of abstraction, hiding details from the levels above.</li>
+ <li><strong>Data Independence:</strong> Allows changes at one level without affecting other levels, enabling logical and physical data independence.</li>
+</ul>
+<br>
+<hr class=line-break>
+<h2>Data Independence</h2>
+<p><strong>Data Independence</strong> is the ability to change the database schema at one level without affecting the schema at higher levels, ensuring that applications and users remain unaffected by changes in data storage or structure. It’s a crucial advantage of the three-schema architecture.</p>
+<h3>Types of Data Independence</h3>
+<h4>Logical Data Independence</h4>
+<p><strong>Logical Data Independence</strong> refers to the ability to modify the conceptual schema (e.g., adding new entities or attributes) without affecting external schemas or application programs. This type of independence is challenging to achieve but is essential for applications to remain unaffected by logical data changes.</p>
+<p><strong>Example:</strong> In a University database, adding a new attribute <code>Email</code> to the <code>Student</code> entity should not affect applications accessing the Student table.</p>
+<h4>Physical Data Independence</h4>
+<p><strong>Physical Data Independence</strong> is the ability to modify the internal schema (e.g., changing storage structure or indexing) without affecting the conceptual schema or application programs. It allows database administrators to optimize storage and improve performance without impacting higher-level structures.</p>
+<p><strong>Example:</strong> In a Library database, switching from one storage structure to another for the Book table should not affect the conceptual schema or applications accessing Book data.</p>
+<hr class=line-break>
+<h2>Summary Table</h2>
+<table>
+ <tbody><tr>
+ <th>Concept</th>
+ <th>Description</th>
+ <th>Example</th>
+ </tr>
+ <tr>
+ <td>Intension</td>
+ <td>Schema or structure of the database, static over time.</td>
+ <td>Table definitions like Customer with columns Customer_ID, Name, Address.</td>
+ </tr>
+ <tr>
+ <td>Extension</td>
+ <td>Actual data in the database at a given moment, dynamic over time.</td>
+ <td>Rows in Customer table like {1, "Alice", "123 Main St"}.</td>
+ </tr>
+ <tr>
+ <td>Database Schema</td>
+ <td>Structure and organization of the database, defined at the time of database creation.</td>
+ <td>Tables, columns, data types, and relationships defined in a Library database.</td>
+ </tr>
+ <tr>
+ <td>Database State</td>
+ <td>Current contents of the database, changing with insert, update, delete operations.</td>
+ <td>Current rows in Book table in the Library database.</td>
+ </tr>
+ <tr>
+ <td>Three-Schema Architecture</td>
+ <td>Layered database architecture with external, conceptual, and internal levels.</td>
+ <td>External level - User views; Conceptual level - logical structure; Internal level - physical storage.</td>
+ </tr>
+ <tr>
+ <td>Logical Data Independence</td>
+ <td>Ability to change conceptual schema without affecting external schemas or applications.</td>
+ <td>Adding new attributes to a Student entity without affecting applications.</td>
+ </tr>
+ <tr>
+ <td>Physical Data Independence</td>
+ <td>Ability to change internal schema without affecting conceptual schema or applications.</td>
+ <td>Changing storage format of Book table without affecting application queries.</td>
+ </tr>
+</table>
+<hr class=line-break></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

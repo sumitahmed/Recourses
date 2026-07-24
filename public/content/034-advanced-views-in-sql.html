@@ -1,0 +1,163 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/6</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h1>Advanced Views in SQL</h1>
+<p>Advanced views in SQL allow for dynamic data querying, complex data summarization, and simplified management of layered data through nested structures. They extend the capabilities of basic views by introducing aggregation, nesting, and conditions for updatability.</p>
+<hr class=line-break>
+<h2>Querying Data from Views</h2>
+<p>Querying data from views is similar to querying data from tables. Since views are virtual tables based on SQL queries, you can retrieve data by selecting columns and applying filters or sorting criteria directly on the view.</p>
+<pre>Syntax:
+SELECT columns FROM view_name WHERE condition ORDER BY column_name;
+</pre>
+<h4>Example</h4>
+<p>Consider a view <strong>Employee_View</strong> created from the Employee table:</p>
+<pre>CREATE VIEW Employee_View AS
+SELECT Employee_ID, Name, Department, Salary
+FROM Employee;
+</pre>
+<p>You can query data from Employee_View as you would a table:</p>
+<pre>SELECT Name, Department
+FROM Employee_View;
+</pre>
+<h4>Filtering and Sorting Data from Views</h4>
+<p>To filter employees in the IT department:</p>
+<pre>SELECT Name, Salary
+FROM Employee_View
+WHERE Department = 'IT';
+</pre>
+<p>To list all employees sorted by their salary in descending order:</p>
+<pre>SELECT Name, Salary
+FROM Employee_View
+ORDER BY Salary DESC;
+</pre>
+<br>
+<hr class=line-break>
+<h2>Conditions for Updating Views</h2>
+<p>Updating views in SQL has certain conditions. A view is updatable if it is based on a single table and doesn’t contain complex expressions like joins, subqueries, aggregate functions, or DISTINCT.</p>
+<h4>Requirements for Updatable Views:</h4>
+<ul>
+ <li><strong>Single Table:</strong> The view must be based on a single table.</li>
+ <li><strong>Direct Mapping:</strong> Each column in the view should directly map to a column in the underlying table.</li>
+ <li><strong>No Aggregations or Joins:</strong> Views with joins, aggregates, or calculated fields are typically not updatable.</li>
+</ul>
+<h4>Example</h4>
+<p>Consider a simple view Employee_Salary_View for updating salaries:</p>
+<pre>CREATE VIEW Employee_Salary_View AS
+SELECT Employee_ID, Salary
+FROM Employee;
+</pre>
+<p>To update a salary in this view:</p>
+<pre>UPDATE Employee_Salary_View
+SET Salary = 70000
+WHERE Employee_ID = 1;
+</pre>
+<p>This updates the salary of Employee_ID = 1 in the Employee table through the view.</p>
+<hr class=line-break>
+<h2>Views with Aggregate Functions</h2>
+<p>Views can include aggregate functions like SUM, COUNT, AVG, MIN, and MAX to provide summarized data. These are often used to create summary views that show totals, averages, or counts.</p>
+<h4>Example</h4>
+<p>Consider an Orders table:</p>
+<table>
+ <tbody><tr>
+ <th>Order_ID</th>
+ <th>Customer_ID</th>
+ <th>Amount</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>101</td>
+ <td>200</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>102</td>
+ <td>150</td>
+ </tr>
+ <tr>
+ <td>3</td>
+ <td>101</td>
+ <td>100</td>
+ </tr>
+</table>
+<p>To create a view that shows the total amount spent by each customer:</p>
+<pre>CREATE VIEW Customer_Summary AS
+SELECT Customer_ID, SUM(Amount) AS Total_Spent
+FROM Orders
+GROUP BY Customer_ID;
+</pre>
+<h4>Result of Customer_Summary View:</h4>
+<table>
+ <tbody><tr>
+ <th>Customer_ID</th>
+ <th>Total_Spent</th>
+ </tr>
+ <tr>
+ <td>101</td>
+ <td>300</td>
+ </tr>
+ <tr>
+ <td>102</td>
+ <td>150</td>
+ </tr>
+</table>
+<br>
+<hr class=line-break>
+<h2>Nested Views</h2>
+<p>Nested Views are views that reference other views rather than directly referencing base tables. They help build complex queries layer-by-layer and simplify data management.</p>
+<h4>Example</h4>
+<p>Consider an Employee_Department view that shows each employee with their department name:</p>
+<pre>CREATE VIEW Employee_Department AS
+SELECT e.Employee_ID, e.Name, d.Department_Name
+FROM Employee e
+JOIN Department d ON e.Department_ID = d.Department_ID;
+</pre>
+<p>Now, create a High_Earners nested view to show employees with salaries above 70,000:</p>
+<pre>CREATE VIEW High_Earners AS
+SELECT Employee_ID, Name, Department_Name
+FROM Employee_Department
+WHERE Salary &gt; 70000;
+</pre>
+<br>
+
+<br>
+<hr class=line-break>
+<h2>Summary Table of SQL View Operations</h2>
+<table>
+ <tbody><tr>
+ <th>Operation</th>
+ <th>Description</th>
+ <th>Example Use Case</th>
+ </tr>
+ <tr>
+ <td>Querying Views</td>
+ <td>Retrieve data from a view like a table</td>
+ <td>SELECT Name FROM Employee_View</td>
+ </tr>
+ <tr>
+ <td>Filtering Views</td>
+ <td>Use WHERE to filter data</td>
+ <td>SELECT Name FROM Employee_View WHERE Department='IT'</td>
+ </tr>
+ <tr>
+ <td>Sorting Views</td>
+ <td>Use ORDER BY to sort data</td>
+ <td>SELECT Name FROM Employee_View ORDER BY Salary DESC</td>
+ </tr>
+ <tr>
+ <td>Updating Views</td>
+ <td>Modify data in views (if updatable)</td>
+ <td>UPDATE Employee_View SET Salary=70000 WHERE ID=1</td>
+ </tr>
+ <tr>
+ <td>Aggregate Functions</td>
+ <td>Use SUM, COUNT, etc., to summarize data</td>
+ <td>CREATE VIEW Total_Sales AS SELECT SUM(Amount) FROM Sales</td>
+ </tr>
+ <tr>
+ <td>Nested Views</td>
+ <td>Use a view to reference another view</td>
+ <td>Create High_Earners view based on Employee_Department</td>
+ </tr>
+</table>
+<br>
+
+<hr class=line-break></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

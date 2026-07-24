@@ -1,0 +1,175 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/6</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h2>Data Replication Techniques</h2>
+<p>Data replication is the process of storing copies of data in multiple locations to ensure high availability, fault tolerance, and improved read performance. By replicating data, distributed systems can provide redundancy in case of failures and optimize data access across regions.</p>
+<hr class=line-break>
+<h3>1. Lazy and Eager Replication</h3>
+<p>Lazy Replication and Eager Replication refer to how and when updates are propagated across replicas.</p>
+<h4>Lazy Replication</h4>
+<p>In this technique, data updates are propagated asynchronously and with some delay. The system ensures that eventually all replicas will have the updated data, but it may take time. Lazy replication prioritizes performance and availability over immediate consistency.</p>
+<h5>Advantages:</h5>
+<ul>
+ <li>Reduced latency for read and write operations.</li>
+ <li>Better performance, as updates are batched and sent during low-traffic periods.</li>
+</ul>
+<h5>Disadvantages:</h5>
+<ul>
+ <li>Temporary inconsistency between replicas.</li>
+ <li>Risk of conflicts if concurrent writes occur on different replicas.</li>
+</ul>
+<h4>Eager Replication</h4>
+<p>Here, updates are immediately propagated to all replicas in a synchronous manner, ensuring that all replicas are consistent at all times.</p>
+<h5>Advantages:</h5>
+<ul>
+ <li>Strong consistency.</li>
+ <li>Immediate reflection of updates across all replicas.</li>
+</ul>
+<h5>Disadvantages:</h5>
+<ul>
+ <li>Increased latency, as each write must be propagated to all replicas before the operation completes.</li>
+ <li>Higher network traffic.</li>
+</ul>
+<p><strong>Example:</strong> For a Social Media Platform:</p>
+<ul>
+ <li><strong>Lazy Replication:</strong> The update is saved locally and propagated to other servers at a later time.</li>
+ <li><strong>Eager Replication:</strong> The update is immediately reflected across all servers to ensure all users see the same content instantly.</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+<hr class=line-break>
+<h3>2. Quorum-Based Replication</h3>
+<p>Quorum-Based Replication is a technique where a majority (or a quorum) of replicas must acknowledge an operation before it is considered successful. This ensures that data is consistent across multiple replicas and provides fault tolerance.</p>
+<p><strong>Quorum:</strong> The number of nodes that must participate in a read or write operation to achieve consistency.</p>
+<p><strong>Example:</strong> In a system with 5 replicas, a quorum might require at least 3 replicas to agree before a write operation is committed. Similarly, for a read operation, a quorum may involve reading from at least 3 replicas.</p>
+<h5>Advantages:</h5>
+<ul>
+ <li>Strong consistency.</li>
+ <li>Fault tolerance, as long as a majority of nodes are available.</li>
+</ul>
+<h5>Disadvantages:</h5>
+<ul>
+ <li>Increased latency due to the need for multiple replicas to respond.</li>
+ <li>Complexity in managing quorum consistency.</li>
+</ul>
+<br>
+
+<br>
+<hr class=line-break>
+<h3>3. Synchronous vs Asynchronous Replication</h3>
+<p>Synchronous Replication and Asynchronous Replication define how data is written and propagated to replicas.</p>
+<h4>Synchronous Replication</h4>
+<p>In this method, each write operation is applied to all replicas before the operation is acknowledged. This ensures strong consistency, as all replicas are in sync at all times.</p>
+<h5>Advantages:</h5>
+<ul>
+ <li>Strong consistency across replicas.</li>
+ <li>No data loss as writes are confirmed on all replicas.</li>
+</ul>
+<h5>Disadvantages:</h5>
+<ul>
+ <li>Higher latency, as writes must be propagated to all replicas before returning a success response.</li>
+ <li>Can be slower, especially over geographically dispersed nodes.</li>
+</ul>
+<h4>Asynchronous Replication</h4>
+<p>In this method, the primary database acknowledges the write operation before it has been propagated to all replicas. This allows for faster writes but can lead to temporary inconsistency across replicas.</p>
+<h5>Advantages:</h5>
+<ul>
+ <li>Lower latency and better performance.</li>
+ <li>Writes are faster because they do not wait for all replicas to confirm.</li>
+</ul>
+<h5>Disadvantages:</h5>
+<ul>
+ <li>Potential for temporary inconsistency between replicas.</li>
+ <li>Risk of data loss if the primary node fails before the replication process is complete.</li>
+</ul>
+<br>
+<hr class=line-break>
+<h3>4. Master-Slave Replication</h3>
+<p>Master-Slave Replication is a common replication model where one node (the master) is responsible for handling all write operations, while other nodes (slaves) replicate the master’s data. The slaves are typically used for read operations.</p>
+<p><strong>Master:</strong> The primary node that accepts write requests.</p>
+<p><strong>Slave:</strong> Replicas that receive data updates from the master node.</p>
+<h5>Advantages:</h5>
+<ul>
+ <li>Easy to implement and manage.</li>
+ <li>Read queries are offloaded to slaves, improving performance.</li>
+</ul>
+<h5>Disadvantages:</h5>
+<ul>
+ <li>The master node can become a bottleneck for write-heavy applications.</li>
+ <li>Single point of failure for writes, as the master node controls all write operations.</li>
+</ul>
+<p><strong>Example:</strong> In an Online Store:</p>
+<ul>
+ <li>The Master handles all inventory updates and order processing.</li>
+ <li>The Slaves serve product listings and inventory data to customers, offloading read-heavy queries from the master.</li>
+</ul>
+<br>
+
+<br>
+<hr class=line-break>
+<h3>5. Multi-Master Replication</h3>
+<p>Multi-Master Replication allows multiple nodes (masters) to handle both read and write operations. All master nodes replicate data to each other, ensuring that all replicas are synchronized.</p>
+<h5>Advantages:</h5>
+<ul>
+ <li>High availability for both reads and writes.</li>
+ <li>No single point of failure, as each master can handle writes.</li>
+</ul>
+<h5>Disadvantages:</h5>
+<ul>
+ <li>Complexity in conflict resolution, as multiple nodes can simultaneously update the same data.</li>
+ <li>Potential for data inconsistency if write conflicts are not handled properly.</li>
+</ul>
+<p><strong>Example:</strong> In a Distributed Online Application:</p>
+<ul>
+ <li>Multiple Master Nodes handle user profile updates and session management, ensuring high availability and fault tolerance.</li>
+</ul>
+<br>
+
+<br>
+<hr class=line-break>
+<h3>Summary Table of Replication Techniques</h3>
+<table border=1>
+ <tbody><tr>
+ <th>Technique</th>
+ <th>Description</th>
+ <th>Example Use Case</th>
+ </tr>
+ <tr>
+ <td>Lazy Replication</td>
+ <td>Updates are propagated with delay.</td>
+ <td>Social media platforms where real-time consistency is not critical.</td>
+ </tr>
+ <tr>
+ <td>Eager Replication</td>
+ <td>Updates are propagated immediately across all replicas.</td>
+ <td>Banking applications where data consistency is crucial.</td>
+ </tr>
+ <tr>
+ <td>Quorum-Based Replication</td>
+ <td>Majority of nodes must acknowledge an operation before it’s complete.</td>
+ <td>Distributed file systems requiring fault tolerance.</td>
+ </tr>
+ <tr>
+ <td>Synchronous Replication</td>
+ <td>Data is replicated synchronously across all replicas.</td>
+ <td>High consistency required in financial transactions.</td>
+ </tr>
+ <tr>
+ <td>Asynchronous Replication</td>
+ <td>Data is replicated asynchronously, allowing for faster writes.</td>
+ <td>Data storage systems with heavy write operations.</td>
+ </tr>
+ <tr>
+ <td>Master-Slave Replication</td>
+ <td>One master node handles writes, and slaves replicate data.</td>
+ <td>E-commerce sites with heavy read loads.</td>
+ </tr>
+ <tr>
+ <td>Multi-Master Replication</td>
+ <td>Multiple master nodes handle both reads and writes.</td>
+ <td>Distributed databases for high availability and fault tolerance.</td>
+ </tr>
+</table>
+<hr class=line-break></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

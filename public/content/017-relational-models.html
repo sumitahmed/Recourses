@@ -1,0 +1,174 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/8</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h1>Relational Models in Database</h1>
+<p>A Relational Model is a data model that organizes data into tables (known as relations) where each table represents an entity or a relationship. In relational models, data is stored in rows and columns, with rows representing individual records (tuples) and columns representing attributes. Each table is identified by a unique name and a primary key that distinguishes each row.</p>
+<hr class=line-break>
+<h2>Structure of a Relational Model</h2>
+<p>In the relational model, data is organized in tables with the following elements:</p>
+<ul>
+ <li><strong>Table (Relation):</strong> Each table represents an entity type (e.g., <code>Customer</code>, <code>Order</code>) and contains data about a set of similar items.</li>
+ <li><strong>Row (Tuple):</strong> Each row represents a unique instance of an entity in the table, like a single customer or order.</li>
+ <li><strong>Column (Attribute):</strong> Each column represents a property of the entity, such as <code>Customer_ID</code> or <code>Name</code>.</li>
+</ul>
+<br>
+
+<br>
+<p><strong>Example:</strong> A <code>Customer</code> table may have:</p>
+<table>
+ <tbody><tr>
+ <th>Customer_ID</th>
+ <th>Name</th>
+ <th>Contact</th>
+ <th>Email</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>John Doe</td>
+ <td>555-1234</td>
+ <td>john@example.com</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>Jane Smith</td>
+ <td>555-5678</td>
+ <td>jane@example.com</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>Domain, Attribute, and Relations</h2>
+<p>In a relational model, certain key concepts help structure and restrict data within tables:</p>
+<h3>1. Domain</h3>
+<p>A domain defines the set of permissible values for a particular attribute, enhancing data consistency.</p>
+<p><strong>Example:</strong> Domain for <code>Customer_ID</code>: Integer values only.</p>
+<h3>2. Attribute</h3>
+<p>An attribute is a characteristic of an entity and is represented as a column in a table. Each attribute has a specific domain that defines the type of values it can hold.</p>
+<p><strong>Example:</strong> In the <code>Customer</code> table, attributes include <code>Customer_ID</code>, <code>Name</code>, <code>Contact</code>, and <code>Email</code>.</p>
+<h3>3. Relation</h3>
+<p>A relation is a table in the relational model that contains data for a specific entity type. Each relation has a unique name and consists of attributes and tuples.</p>
+<hr class=line-break>
+<h2>Degree, Cardinality, Relation Instance</h2>
+<h3>1. Degree</h3>
+<p>The degree of a relation is the number of attributes (columns) it has.</p>
+<p><strong>Example:</strong> If a <code>Product</code> table has columns <code>Product_ID</code>, <code>Name</code>, and <code>Price</code>, its degree is 3.</p>
+<h3>2. Cardinality</h3>
+<p>The cardinality of a relation is the number of rows (tuples) it contains.</p>
+<p><strong>Example:</strong> If a <code>Product</code> table has 10 rows, the cardinality is 10.</p>
+<h3>3. Relation Instance</h3>
+<p>A relation instance is a specific state or set of tuples in a relation at a particular time.</p>
+<table>
+ <tbody><tr>
+ <th>Product_ID</th>
+ <th>Name</th>
+ <th>Price</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>Laptop</td>
+ <td>1200</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>Smartphone</td>
+ <td>700</td>
+ </tr>
+</table>
+<h2>Characteristics of Relations</h2>
+<p>Relational models possess several characteristics that ensure data integrity and structure consistency:</p>
+<ul>
+ <li><strong>Uniqueness of Rows:</strong> Each row in a relation must be unique.</li>
+ <li><strong>Atomic Values:</strong> Each attribute value must be atomic (indivisible).</li>
+ <li><strong>Ordering of Rows and Columns:</strong> The ordering in relational tables is irrelevant.</li>
+ <li><strong>Primary Key:</strong> Each relation has a primary key that uniquely identifies each row.</li>
+ <li><strong>Foreign Key:</strong> A foreign key links two relations, establishing a relationship between tables.</li>
+</ul>
+<br>
+<hr class=line-break>
+<h2>Mapping ER Diagrams to Relational Schemas</h2>
+<p>To build a relational database from an ER model, it’s necessary to map the ER diagram to a relational schema. This process involves converting entities, attributes, and relationships in the ER diagram into tables, columns, and keys in a relational database.</p>
+<h3>Steps for Mapping ER Diagrams to Relational Schemas</h3>
+<p><strong>Map Entities to Tables:</strong> Each entity in the ER diagram becomes a table.</p>
+<p><strong>Map Relationships:</strong> Convert relationships in the ER diagram into tables based on their cardinality:</p>
+<ul>
+ <li>One-to-One (1:1): The primary key of one entity can be included as a foreign key in the other entity’s table.</li>
+ <li>One-to-Many (1:M): The primary key of the "one" side is added as a foreign key to the "many" side.</li>
+ <li>Many-to-Many (M:M): A new table is created with foreign keys from both entities.</li>
+</ul>
+<h2>Example of Mapping: University Database</h2>
+<p><strong>Consider:</strong> A University Database with entities <code>Student</code>, <code>Course</code>, and <code>Instructor</code> with relationships.</p>
+<table>
+ <tbody><tr>
+ <th>Table</th>
+ <th>Columns</th>
+ <th>Description</th>
+ </tr>
+ <tr>
+ <td>Student</td>
+ <td>Student_ID (PK), Name, Major</td>
+ <td>Contains student details</td>
+ </tr>
+ <tr>
+ <td>Course</td>
+ <td>Course_ID (PK), Title, Credits</td>
+ <td>Contains course details</td>
+ </tr>
+ <tr>
+ <td>Instructor</td>
+ <td>Instructor_ID (PK), Name, Department</td>
+ <td>Contains instructor details</td>
+ </tr>
+ <tr>
+ <td>Enrollment</td>
+ <td>Student_ID (FK), Course_ID (FK)</td>
+ <td>Links students with courses they enroll in</td>
+ </tr>
+ <tr>
+ <td>Teaches</td>
+ <td>Instructor_ID (FK), Course_ID (FK)</td>
+ <td>Links instructors with courses they teach</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>Difference Between Database and RDBMS</h2>
+<table>
+ <tbody><tr>
+ <th>Feature</th>
+ <th>Database</th>
+ <th>RDBMS (Relational Database Management System)</th>
+ </tr>
+ <tr>
+ <td>Definition</td>
+ <td>A collection of organized data that can be easily accessed and managed.</td>
+ <td>A type of database that uses tables (relations) to store data in rows and columns.</td>
+ </tr>
+ <tr>
+ <td>Data Structure</td>
+ <td>Stores data without a structured format.</td>
+ <td>Stores data in a structured tabular format with relationships.</td>
+ </tr>
+ <tr>
+ <td>Relationships</td>
+ <td>Not enforced between data items.</td>
+ <td>Relationships between tables are defined through keys.</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>Advantages and Disadvantages of RDBMS</h2>
+<h3>Advantages of RDBMS</h3>
+<ul>
+ <li><strong>Data Integrity and Consistency:</strong> RDBMS enforces rules like primary and foreign keys.</li>
+ <li><strong>Data Security:</strong> RDBMS systems provide user authentication and access control.</li>
+ <li><strong>Reduced Data Redundancy:</strong> RDBMS reduces data duplication through normalization.</li>
+ <li><strong>Support for Complex Queries:</strong> RDBMS allows for complex querying with SQL.</li>
+ <li><strong>Data Independence:</strong> Changes to the database schema do not affect the application layer.</li>
+ <li><strong>ACID Compliance:</strong> Supports transactions that follow ACID properties.</li>
+</ul>
+<h3>Disadvantages of RDBMS</h3>
+<ul>
+ <li><strong>Complexity and Cost:</strong> RDBMS systems can be complex to set up and maintain.</li>
+ <li><strong>Performance Issues:</strong> RDBMS may face bottlenecks with large datasets.</li>
+ <li><strong>Fixed Schema Requirement:</strong> Less flexible for handling unstructured data.</li>
+ <li><strong>Scaling Challenges:</strong> RDBMS is typically vertically scalable, making scaling costly.</li>
+</ul>
+<br>
+<hr class=line-break>
+</div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

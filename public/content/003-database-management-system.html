@@ -1,0 +1,272 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/8</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h1>Database Management System</h1>
+<h2>1. What is a DBMS?</h2>
+<p>A Database Management System (DBMS) is software designed to define, create, manage, and control access to a database. It provides an interface between the end-users or applications and the database, making it easy to perform operations like data storage, retrieval, and modification. Examples of DBMS include MySQL, PostgreSQL, Oracle Database, and Microsoft SQL Server.</p>
+<h3>Key Functions of DBMS</h3>
+<ul>
+ <li>Data Definition: Allows defining the structure of data within the database.</li>
+ <li>Data Manipulation: Enables data to be inserted, updated, or deleted.</li>
+ <li>Data Security: Provides access control mechanisms to secure data.</li>
+ <li>Data Integrity: Ensures data accuracy and consistency.</li>
+ <li>Data Recovery: Offers backup and recovery functions in case of data loss.</li>
+</ul>
+<br>
+<hr class=line-break>
+<h2>2. Database vs. File System</h2>
+<p>File systems are a simpler way to store data in files or folders on a computer. While file systems allow data storage, they lack complex functionalities like data integrity checks, data retrieval, and transaction management. The DBMS offers these advanced features, providing a more efficient way of organizing and managing large datasets.</p>
+<table>
+ <tbody><tr>
+ <th>Feature</th>
+ <th>File System</th>
+ <th>DBMS</th>
+ </tr>
+ <tr>
+ <td>Data Redundancy</td>
+ <td>High (data duplication)</td>
+ <td>Low (redundancy minimized)</td>
+ </tr>
+ <tr>
+ <td>Data Access</td>
+ <td>Sequential and less efficient</td>
+ <td>Faster, optimized with indexes</td>
+ </tr>
+ <tr>
+ <td>Data Integrity</td>
+ <td>Limited checks</td>
+ <td>Enforced by constraints</td>
+ </tr>
+ <tr>
+ <td>Security</td>
+ <td>Basic file permissions</td>
+ <td>Granular access control</td>
+ </tr>
+ <tr>
+ <td>Concurrency</td>
+ <td>No or limited support</td>
+ <td>Handles concurrent users</td>
+ </tr>
+ <tr>
+ <td>Backup/Recovery</td>
+ <td>Manual backup</td>
+ <td>Automated, with recovery tools</td>
+ </tr>
+ <tr>
+ <td>Transaction</td>
+ <td>None</td>
+ <td>ACID properties for reliability</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>3. Why is DBMS Important?</h2>
+<p>DBMS has become essential in managing data for various industries due to its advantages over traditional file-based systems. Here’s why it matters:</p>
+<ul>
+ <li>Data Integrity and Accuracy: Ensures data is accurate and consistent.</li>
+ <li>Efficient Data Management: Organizes large datasets, making data manipulation faster.</li>
+ <li>Enhanced Security: Provides multi-layer security to prevent unauthorized access.</li>
+ <li>Data Recovery: Ensures data safety with backup and recovery functions.</li>
+ <li>Scalability: Easily scales to handle growing data volumes, making it suitable for enterprise use.</li>
+</ul>
+<h3>Practical Use Case: E-commerce Inventory Management</h3>
+<p>Consider an online store managing product inventory. Using a DBMS, it can efficiently track each product’s stock, sale, and restock in real-time. The DBMS can provide quick access to product details, prevent duplicate data (like product IDs), and allow multiple users (store staff) to access the database simultaneously without interference.</p>
+<hr class=line-break>
+<h2>4. ACID Properties</h2>
+<p>The ACID properties are essential for ensuring reliability in DBMS transactions. Each property guarantees different aspects of transaction safety:</p>
+<table>
+ <tbody><tr>
+ <th>Property</th>
+ <th>Description</th>
+ <th>Example</th>
+ </tr>
+ <tr>
+ <td>Atomicity</td>
+ <td>A transaction must complete fully or not at all. If any part of the transaction fails, the whole transaction is rolled back.</td>
+ <td>Transferring funds between accounts: if funds are deducted from one account, they must be added to the other, or none.</td>
+ </tr>
+ <tr>
+ <td>Consistency</td>
+ <td>Ensures data remains consistent before and after a transaction, enforcing all database rules (like constraints and relationships).</td>
+ <td>Prevents data that violates constraints, like trying to insert an order for a non-existent product.</td>
+ </tr>
+ <tr>
+ <td>Isolation</td>
+ <td>Transactions are independent of each other. Changes in one transaction remain invisible to others until it completes.</td>
+ <td>Multiple customers adding items to their cart without interference.</td>
+ </tr>
+ <tr>
+ <td>Durability</td>
+ <td>Once a transaction completes, its result persists even if the system crashes.</td>
+ <td>After transferring funds, the final balance is saved permanently, unaffected by system failures.</td>
+ </tr>
+</table>
+<h3>Example of ACID Properties in SQL</h3>
+<pre><code>BEGIN TRANSACTION;
+UPDATE Accounts SET balance = balance - 500 WHERE account_id = 'Account_A';
+UPDATE Accounts SET balance = balance + 500 WHERE account_id = 'Account_B';
+COMMIT;
+</code>
+</pre>
+<p>If any part of this transaction fails, both updates are rolled back, maintaining atomicity.</p>
+<hr class=line-break>
+<h2>5. Components of DBMS</h2>
+<p>A DBMS is composed of several components that work together to provide a complete data management environment.</p>
+<table>
+ <tbody><tr>
+ <th>Component</th>
+ <th>Description</th>
+ </tr>
+ <tr>
+ <td>Database Engine</td>
+ <td>The core service that handles CRUD (Create, Read, Update, Delete) operations, data storage, and retrieval.</td>
+ </tr>
+ <tr>
+ <td>Query Processor</td>
+ <td>Interprets and executes SQL queries by translating high-level commands into machine-level instructions.</td>
+ </tr>
+ <tr>
+ <td>Transaction Manager</td>
+ <td>Ensures ACID properties by managing transactions and concurrency, handling commits and rollbacks.</td>
+ </tr>
+ <tr>
+ <td>Storage Manager</td>
+ <td>Manages data storage and organization on the disk, efficiently accessing data blocks.</td>
+ </tr>
+ <tr>
+ <td>Metadata Manager</td>
+ <td>Stores and manages metadata, which is the data about the database’s structure, constraints, and relationships.</td>
+ </tr>
+ <tr>
+ <td>User Interface</td>
+ <td>Provides tools like SQL editors or GUIs, enabling users to interact with the database.</td>
+ </tr>
+</table>
+<h3>Example: How DBMS Components Work Together</h3>
+<p>Let’s consider a movie rental system where customers can rent and return movies. Here’s how each DBMS component plays a role:</p>
+<ul>
+ <li><strong>Database Engine</strong> stores all customer data, movie data, and rental records.</li>
+ <li><strong>Query Processor</strong> interprets queries, like retrieving all movies available for rent.</li>
+ <li><strong>Transaction Manager</strong> ensures that if a customer rents multiple movies, either all movies are updated in the database as rented, or none if there's an error.</li>
+ <li><strong>Storage Manager</strong> organizes the storage of movie data to allow efficient retrieval.</li>
+ <li><strong>Metadata Manager</strong> maintains metadata on customer information, movie categories, and rental durations.</li>
+ <li><strong>User Interface</strong> allows staff to search for movies, register new rentals, and update the movie inventory.</li>
+</ul>
+<br>
+<hr class=line-break>
+<h2>Summary Table: Components and Use in DBMS</h2>
+<table>
+ <tbody><tr>
+ <th>Component</th>
+ <th>Role in Movie Rental System Example</th>
+ </tr>
+ <tr>
+ <td>Database Engine</td>
+ <td>Stores customer data, movie inventory, and rental records</td>
+ </tr>
+ <tr>
+ <td>Query Processor</td>
+ <td>Executes customer or staff queries to retrieve available movies or due rentals</td>
+ </tr>
+ <tr>
+ <td>Transaction Manager</td>
+ <td>Manages transactions like renting multiple movies at once</td>
+ </tr>
+ <tr>
+ <td>Storage Manager</td>
+ <td>Manages how data for each movie, rental, and customer is stored</td>
+ </tr>
+ <tr>
+ <td>Metadata Manager</td>
+ <td>Stores structural data, like constraints on rental limits or due dates</td>
+ </tr>
+ <tr>
+ <td>User Interface</td>
+ <td>Provides a GUI or query editor for staff to interact with the system</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h3>Practical Example: Sample Tables for Movie Rental System</h3>
+<h4>1. Customers Table</h4>
+<table>
+ <tbody><tr>
+ <th>customer_id</th>
+ <th>name</th>
+ <th>contact_info</th>
+ <th>membership_level</th>
+ </tr>
+ <tr>
+ <td>101</td>
+ <td>John Doe</td>
+ <td>john@example.com</td>
+ <td>Gold</td>
+ </tr>
+ <tr>
+ <td>102</td>
+ <td>Jane Smith</td>
+ <td>jane@example.com</td>
+ <td>Silver</td>
+ </tr>
+</table>
+<h4>2. Movies Table</h4>
+<table>
+ <tbody><tr>
+ <th>movie_id</th>
+ <th>title</th>
+ <th>genre</th>
+ <th>availability</th>
+ </tr>
+ <tr>
+ <td>201</td>
+ <td>The Matrix</td>
+ <td>Sci-Fi</td>
+ <td>Available</td>
+ </tr>
+ <tr>
+ <td>202</td>
+ <td>Inception</td>
+ <td>Thriller</td>
+ <td>Rented</td>
+ </tr>
+</table>
+<h4>3. Rentals Table</h4>
+<table>
+ <tbody><tr>
+ <th>rental_id</th>
+ <th>customer_id</th>
+ <th>movie_id</th>
+ <th>rental_date</th>
+ <th>return_date</th>
+ </tr>
+ <tr>
+ <td>301</td>
+ <td>101</td>
+ <td>201</td>
+ <td>2024-11-01</td>
+ <td>2024-11-07</td>
+ </tr>
+ <tr>
+ <td>302</td>
+ <td>102</td>
+ <td>202</td>
+ <td>2024-11-02</td>
+ <td>2024-11-09</td>
+ </tr>
+</table>
+<h3>Sample Query: Retrieve All Movies Available for Rent</h3>
+<pre><code>SELECT title, genre
+FROM Movies
+WHERE availability = 'Available';
+</code>
+</pre>
+<p><strong>Output:</strong></p>
+<table>
+ <tbody><tr>
+ <th>title</th>
+ <th>genre</th>
+ </tr>
+ <tr>
+ <td>The Matrix</td>
+ <td>Sci-Fi</td>
+ </tr>
+</table>
+<hr class=line-break>
+</div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

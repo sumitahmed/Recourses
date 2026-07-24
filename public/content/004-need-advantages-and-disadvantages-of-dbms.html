@@ -1,0 +1,233 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/4</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h1>Need, Advantages, and Disadvantages of DBMS</h1>
+<h2>Database Applications in Various Fields</h2>
+<p>Database applications are essential in various sectors due to their ability to efficiently manage, retrieve, and analyze data. Let's explore some common uses of databases in different fields:</p>
+<h3>1. Banking and Finance</h3>
+<p>Example: Banks use databases to store customer account information, transaction history, and loan records. A customer’s details, account status, and transaction history can be quickly retrieved when needed.</p>
+<h4>Schema Example:</h4>
+<table>
+ <tbody><tr>
+ <th>AccountID</th>
+ <th>CustomerName</th>
+ <th>AccountType</th>
+ <th>Balance</th>
+ <th>LastTransactionDate</th>
+ </tr>
+ <tr>
+ <td>12345</td>
+ <td>Alice</td>
+ <td>Savings</td>
+ <td>$5000</td>
+ <td>2024-11-01</td>
+ </tr>
+ <tr>
+ <td>67890</td>
+ <td>Bob</td>
+ <td>Checking</td>
+ <td>$2500</td>
+ <td>2024-10-28</td>
+ </tr>
+</table>
+<p><strong>Use Case:</strong> When a customer initiates a transaction, the database ensures the account has sufficient balance, deducts the transaction amount, and updates the balance in real time.</p>
+<h3>2. Education</h3>
+<p>Example: Universities and schools use databases to store student records, courses, grades, and attendance.</p>
+<h4>Schema Example:</h4>
+<table>
+ <tbody><tr>
+ <th>StudentID</th>
+ <th>Name</th>
+ <th>Course</th>
+ <th>Grade</th>
+ <th>Attendance</th>
+ </tr>
+ <tr>
+ <td>001</td>
+ <td>John Doe</td>
+ <td>Math 101</td>
+ <td>A</td>
+ <td>90%</td>
+ </tr>
+ <tr>
+ <td>002</td>
+ <td>Jane Smith</td>
+ <td>History 202</td>
+ <td>B+</td>
+ <td>85%</td>
+ </tr>
+</table>
+<p><strong>Use Case:</strong> When generating report cards, the database aggregates each student's grades across different courses.</p>
+<h3>3. E-commerce</h3>
+<p>Example: E-commerce platforms manage vast amounts of data on products, customers, orders, and shipping.</p>
+<h4>Schema Example:</h4>
+<table>
+ <tbody><tr>
+ <th>OrderID</th>
+ <th>CustomerID</th>
+ <th>ProductID</th>
+ <th>Quantity</th>
+ <th>OrderDate</th>
+ </tr>
+ <tr>
+ <td>1001</td>
+ <td>200</td>
+ <td>3001</td>
+ <td>2</td>
+ <td>2024-11-02</td>
+ </tr>
+ <tr>
+ <td>1002</td>
+ <td>201</td>
+ <td>3005</td>
+ <td>1</td>
+ <td>2024-11-03</td>
+ </tr>
+</table>
+<p><strong>Use Case:</strong> The database updates stock levels when an order is placed and provides recommendations to customers based on their order history.</p>
+<h3>4. Healthcare</h3>
+<p>Example: Hospitals and clinics use databases to manage patient records, appointments, treatment histories, and billing.</p>
+<h4>Schema Example:</h4>
+<table>
+ <tbody><tr>
+ <th>PatientID</th>
+ <th>Name</th>
+ <th>Diagnosis</th>
+ <th>TreatmentPlan</th>
+ <th>LastVisitDate</th>
+ </tr>
+ <tr>
+ <td>10001</td>
+ <td>Clara Brown</td>
+ <td>Hypertension</td>
+ <td>Medication</td>
+ <td>2024-10-22</td>
+ </tr>
+ <tr>
+ <td>10002</td>
+ <td>James Green</td>
+ <td>Diabetes</td>
+ <td>Lifestyle Plan</td>
+ <td>2024-10-15</td>
+ </tr>
+</table>
+<p><strong>Use Case:</strong> Doctors can retrieve a patient's complete medical history before treatment, ensuring continuity and personalized care.</p>
+<hr class=line-break>
+<h2>Advantages of DBMS</h2>
+<p>A Database Management System provides several benefits that enhance data handling and improve organizational efficiency.</p>
+<ol>
+ <li><strong>Data Integrity and Security</strong><br>
+ Explanation: DBMS ensures only authorized users access specific data, enhancing security. It also validates data to ensure integrity across all tables and fields.<br>
+ Example: In a banking DBMS, account details are only accessible by authorized employees.
+ </li>
+ <li><strong>Data Redundancy Reduction</strong><br>
+ Explanation: Unlike file systems, a DBMS minimizes data duplication by normalizing data.<br>
+ Example: Customer information is stored once and used by various departments (e.g., billing, support), reducing data redundancy.
+ </li>
+ <li><strong>Easy Data Retrieval and Querying</strong><br>
+ Explanation: Using SQL, users can query databases and retrieve specific information quickly.<br>
+ Example: A reIlon company can retrieve monthly sales data using a simple SQL query:
+ <pre><code>SELECT SUM(SalesAmount) FROM Orders WHERE OrderDate BETWEEN '2024-10-01' AND '2024-10-31';</code></pre>
+ </li>
+ <li><strong>Improved Data Consistency</strong><br>
+ Explanation: DBMS enforces data consistency by making sure updates in one place are reflected throughout the database.<br>
+ Example: Updating a customer’s phone number in one table updates all linked tables where the number is used.
+ </li>
+ <li><strong>Data Backup and Recovery</strong><br>
+ Explanation: Most DBMS systems offer automated backup and recovery options to prevent data loss during crashes or other issues.<br>
+ Example: Databases are regularly backed up in a hospital system, so patient data is recoverable even in case of system failure.
+ </li>
+ <li><strong>Enhanced Data Sharing and Multi-User Environment</strong><br>
+ Explanation: Multiple users can access and modify data concurrently without conflict, thanks to transaction management.<br>
+ Example: In a collaborative team setting, members can update project records simultaneously.
+ </li>
+</ol>
+<br> 
+<hr class=line-break>
+<h2>Disadvantages of DBMS</h2>
+<p>While DBMS has many advantages, there are some limitations to consider:</p>
+<ol>
+ <li><strong>Cost of DBMS and Infrastructure</strong><br>
+ Explanation: Implementing a DBMS can be expensive due to hardware, software, and skilled personnel costs.<br>
+ Example: Licensing for enterprise DBMS like Oracle or Microsoft SQL Server can be high, making it impractical for small businesses.
+ </li>
+ <li><strong>Complexity in Setup and Management</strong><br>
+ Explanation: A DBMS is complex to set up, requiring a team with expertise in data modeling, security, and system management.<br>
+ Example: A team in an e-commerce company must continually optimize the database for performance, especially as data grows.
+ </li>
+ <li><strong>Performance Overhead for Small-Scale Applications</strong><br>
+ Explanation: For small, straightforward applications, a DBMS may introduce unnecessary complexity and slow performance.<br>
+ Example: A small reIlon shop might find it easier to manage inventory in a simple spreadsheet rather than a DBMS.
+ </li>
+ <li><strong>Vulnerability to Data Security Breaches</strong><br>
+ Explanation: If not properly secured, a DBMS is vulnerable to breaches, potentially exposing sensitive information.<br>
+ Example: Data breaches in healthcare databases can lead to compromised patient confidentiality.
+ </li>
+ <li><strong>Regular Maintenance and Upgrades</strong><br>
+ Explanation: DBMS systems require ongoing updates and maintenance to fix bugs, update features, and ensure data integrity.<br>
+ Example: In a financial institution, the database must be maintained regularly to comply with new regulatory standards.
+ </li>
+</ol>
+<br> 
+<hr class=line-break>
+<h2>Practical Example of Database Use</h2>
+<p>Suppose a company wants to track customer orders. Here’s how a simple relational database schema might look and how SQL queries interact with it.</p>
+<h3>Order Table Schema</h3>
+<table>
+ <tbody><tr>
+ <th>OrderID</th>
+ <th>CustomerID</th>
+ <th>ProductID</th>
+ <th>Quantity</th>
+ <th>OrderDate</th>
+ </tr>
+ <tr>
+ <td>1001</td>
+ <td>200</td>
+ <td>3001</td>
+ <td>2</td>
+ <td>2024-11-02</td>
+ </tr>
+ <tr>
+ <td>1002</td>
+ <td>201</td>
+ <td>3005</td>
+ <td>1</td>
+ <td>2024-11-03</td>
+ </tr>
+</table>
+<h3>SQL Query Example</h3>
+<p>Retrieve all orders placed after November 1, 2024:</p>
+<pre><code>SELECT * FROM Orders WHERE OrderDate &gt; '2024-11-01';</code></pre>
+<p><strong>Output:</strong></p>
+<table>
+ <tbody><tr>
+ <th>OrderID</th>
+ <th>CustomerID</th>
+ <th>ProductID</th>
+ <th>Quantity</th>
+ <th>OrderDate</th>
+ </tr>
+ <tr>
+ <td>1001</td>
+ <td>200</td>
+ <td>3001</td>
+ <td>2</td>
+ <td>2024-11-02</td>
+ </tr>
+ <tr>
+ <td>1002</td>
+ <td>201</td>
+ <td>3005</td>
+ <td>1</td>
+ <td>2024-11-03</td>
+ </tr>
+</table>
+<p>Calculate total quantity of a product sold in November:</p>
+<pre><code>SELECT ProductID, SUM(Quantity) as TotalSold
+FROM Orders
+WHERE OrderDate BETWEEN '2024-11-01' AND '2024-11-30'
+GROUP BY ProductID;
+</code></pre>
+<br> 
+<hr class=line-break>
+</div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

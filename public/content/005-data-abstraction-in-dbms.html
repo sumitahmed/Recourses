@@ -1,0 +1,333 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/6</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h1>Data Abstraction </h1>
+<p>Data Abstraction is a fundamental concept in Database Management Systems (DBMS) that simplifies data handling by hiding complex structures from the user and exposing only essential information. Think of data abstraction as a way to manage data without revealing all the details, much like how a car's user interacts with a steering wheel rather than worrying about the engine mechanics.</p>
+<p>In DBMS, data abstraction helps developers and users work with databases more efficiently by allowing them to focus on the "what" rather than the "how." </p>
+<h2>1. What is Data Abstraction?</h2>
+<p>Data Abstraction in DBMS refers to the process of hiding the complexity of the underlying database system from users and only presenting the essential information. The purpose is to make database usage simpler for end-users, administrators, and developers by focusing on what data is required instead of how it's stored or maintained.</p>
+<h3>Key objectives of data abstraction:</h3>
+<ul>
+ <li>Simplify the interaction with complex database structures.</li>
+ <li>Enhance security by hiding sensitive or irrelevant data from specific users.</li>
+ <li>Improve efficiency by optimizing data retrieval and manipulation.</li>
+</ul>
+<p>For instance, while a user might interact with a "Customer" table to get customer details, they do not need to know how these records are stored or managed internally.</p>
+<hr class=line-break>
+<h2>2. Levels of Data Abstraction</h2>
+<p>Data abstraction in a DBMS is typically divided into three levels: Physical Level, Logical Level, and View Level. Each level represents a different perspective of the database structure.</p>
+<br>
+
+<br>
+<h3>Physical Level (Internal Level)</h3>
+<p><strong>Definition:</strong> The physical level defines how data is stored in the database, including data storage methods, indexing, and file organization. It focuses on the low-level details of data storage, which are managed by the database administrator.</p>
+<p><strong>Purpose:</strong> This level is primarily concerned with optimizing storage and retrieval methods.</p>
+<p><strong>Example:</strong> A table named "Employees" might be stored on disk as binary files or indexed structures, but these details are hidden from the end user.</p>
+<table>
+ <tbody><tr>
+ <th>Attribute</th>
+ <th>Storage Type</th>
+ <th>Index Type</th>
+ </tr>
+ <tr>
+ <td>Employee_ID</td>
+ <td>Integer (4 bytes)</td>
+ <td>Primary Key</td>
+ </tr>
+ <tr>
+ <td>Name</td>
+ <td>Variable-Length String</td>
+ <td>Text</td>
+ </tr>
+ <tr>
+ <td>Salary</td>
+ <td>Decimal (8 bytes)</td>
+ <td>Indexed</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h3>Logical Level (Conceptual Level)</h3>
+<p><strong>Definition:</strong> The logical level defines what data is stored and the relationships between them without specifying how they are stored. It describes the structure of the database, including tables, columns, and relationships.</p>
+<p><strong>Purpose:</strong> This level represents the data as a whole and is accessed by developers or database administrators to manage and manipulate the database schema.</p>
+<p><strong>Example:</strong> The "Employees" table structure with attributes like Employee_ID, Name, Position, and Salary can be accessed and manipulated at the logical level, without the need to understand storage details.</p>
+<table>
+ <tbody><tr>
+ <th>Table</th>
+ <th>Attributes</th>
+ </tr>
+ <tr>
+ <td>Employees</td>
+ <td>Employee_ID, Name, Position, Salary</td>
+ </tr>
+ <tr>
+ <td>Departments</td>
+ <td>Department_ID, Department_Name</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h3>View Level (External Level)</h3>
+<p><strong>Definition:</strong> The view level is the highest level of data abstraction that provides a user-specific view of the data. Users interact with data through views that present only relevant data according to their needs.</p>
+<p><strong>Purpose:</strong> This level controls access by allowing specific views of the data while hiding sensitive or unnecessary information.</p>
+<p><strong>Example:</strong> A view named "Employee_Salary_View" may display only the Employee_ID and Salary for payroll staff, hiding other information like personal details.</p>
+<table>
+ <tbody><tr>
+ <th>View Name</th>
+ <th>Visible Attributes</th>
+ </tr>
+ <tr>
+ <td>Employee_Salary_View</td>
+ <td>Employee_ID, Salary</td>
+ </tr>
+ <tr>
+ <td>Employee_Contact_View</td>
+ <td>Employee_ID, Name, Contact</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>3. Database Schemas</h2>
+<p>A schema is the blueprint or structure of a database that defines how data is organized and related. In DBMS, schemas are categorized based on the level of abstraction.</p>
+<h3>Physical Schema</h3>
+<p><strong>Definition:</strong> The physical schema defines the physical storage structure of the database, including file locations, data compression techniques, and indexing mechanisms.</p>
+<p><strong>Purpose:</strong> Physical schemas are used by database administrators to manage and optimize storage efficiency.</p>
+<p><strong>Example:</strong> If the "Employees" table is stored in a compressed format to save space, this deIlon would be defined in the physical schema.</p>
+<h3>Logical Schema</h3>
+<p><strong>Definition:</strong> The logical schema outlines the structure of the entire database, including tables, relationships, constraints, and data types.</p>
+<p><strong>Purpose:</strong> Logical schemas represent the actual data model and are used by developers to understand data relationships and constraints.</p>
+<table>
+ <tbody><tr>
+ <th>Entity</th>
+ <th>Attribute</th>
+ <th>Data Type</th>
+ <th>Constraint</th>
+ </tr>
+ <tr>
+ <td>Employees</td>
+ <td>Employee_ID</td>
+ <td>Integer</td>
+ <td>Primary Key</td>
+ </tr>
+ <tr>
+ <td>Employees</td>
+ <td>Name</td>
+ <td>Varchar(50)</td>
+ <td>Not Null</td>
+ </tr>
+ <tr>
+ <td>Departments</td>
+ <td>Department_ID</td>
+ <td>Integer</td>
+ <td>Primary Key</td>
+ </tr>
+</table>
+<h3>External Schema</h3>
+<p><strong>Definition:</strong> The external schema, also known as a view schema, is a tailored view for end-users that presents data in a way that meets specific requirements.</p>
+<p><strong>Purpose:</strong> External schemas provide a customized view for different users, controlling access and enhancing usability.</p>
+<p><strong>Example:</strong> An HR view might allow HR personnel to see employee details, while a finance view only allows access to payroll information.</p>
+<table>
+ <tbody><tr>
+ <th>External View</th>
+ <th>Attributes Visible</th>
+ </tr>
+ <tr>
+ <td>HR View</td>
+ <td>Employee_ID, Name, Position, Department</td>
+ </tr>
+ <tr>
+ <td>Payroll View</td>
+ <td>Employee_ID, Salary</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>4. Database Views</h2>
+<p>A database view is a virtual table representing a subset of the data from one or more tables. Views do not store data physically but act as a lens to present data from underlying tables.</p>
+<h3>Purpose of Views</h3>
+<ul>
+ <li>Simplify complex queries by presenting only necessary information.</li>
+ <li>Enhance security by restricting access to specific columns or rows.</li>
+ <li>Improve readability and usability for users by hiding irrelevant data.</li>
+</ul>
+<h3>Creating a View</h3>
+<p>Here’s how a view can be created in SQL:</p>
+<pre><code>CREATE VIEW Employee_Salary_View AS
+SELECT Employee_ID, Salary
+FROM Employees;
+</code></pre>
+<p>In this example, the view Employee_Salary_View only shows Employee_ID and Salary, hiding other sensitive information such as the employee's contact details.</p>
+<hr class=line-break>
+<h2>5. Database Instances</h2>
+<p>A database instance is a specific snapshot of the database at a particular moment in time. Unlike schemas, which define the structure, instances contain the actual data.</p>
+<h3>Difference Between Schema and Instance</h3>
+<table>
+ <tbody><tr>
+ <th>Aspect</th>
+ <th>Schema</th>
+ <th>Instance</th>
+ </tr>
+ <tr>
+ <td>Definition</td>
+ <td>Structure of the database</td>
+ <td>Data within the structure</td>
+ </tr>
+ <tr>
+ <td>Persistence</td>
+ <td>Permanent</td>
+ <td>Temporary (changes over time)</td>
+ </tr>
+ <tr>
+ <td>Example</td>
+ <td>Employee_ID, Name, Salary (columns)</td>
+ <td>101, John Doe, 50000 (row data)</td>
+ </tr>
+</table>
+<h3>Example of Instances</h3>
+<p>Consider an Employees table with attributes Employee_ID, Name, Position, and Salary. The schema would define these columns, while an instance would contain specific data values, as shown below.</p>
+<table>
+ <tbody><tr>
+ <th>Employee_ID</th>
+ <th>Name</th>
+ <th>Position</th>
+ <th>Salary</th>
+ </tr>
+ <tr>
+ <td>101</td>
+ <td>John Doe</td>
+ <td>Manager</td>
+ <td>80000</td>
+ </tr>
+ <tr>
+ <td>102</td>
+ <td>Jane Smith</td>
+ <td>Developer</td>
+ <td>60000</td>
+ </tr>
+</table>
+<h2>Practical Use Case of Data Abstraction in DBMS</h2>
+<p><strong>Use Case:</strong> Imagine an e-commerce platform managing customer, order, and product data.</p>
+<ul>
+ <li><strong>Physical Level:</strong> Data on customer details, orders, and products are stored as binary files with specific indexing for fast retrieval.</li>
+ <li><strong>Logical Level:</strong> Relationships between Customer, Order, and Product tables are defined, such as foreign key constraints linking orders to customers and products.</li>
+ <li><strong>View Level:</strong> The platform's customer service team might have a view that only displays customer and order data, while the product management team sees views containing product information.</li>
+</ul>
+<br>
+<hr class=line-break>
+<h3>Example: Library Database</h3>
+<p>Consider a library database that manages data on Books, Authors, and Borrowers. This example shows how data is stored and presented at each level of abstraction.</p>
+<h3>1. Physical Level (Internal Level)</h3>
+<p>At the physical level, the database administrator decides how data is stored on the disk. For example:</p>
+<ul>
+ <li>The Books table is stored as a binary file, with specific indexing on the ISBN column for fast access.</li>
+ <li>The Borrowers table is compressed to save storage space.</li>
+</ul>
+<table>
+ <tbody><tr>
+ <th>Table</th>
+ <th>File Type</th>
+ <th>Storage Type</th>
+ <th>Indexing Method</th>
+ </tr>
+ <tr>
+ <td>Books</td>
+ <td>Binary</td>
+ <td>Compressed</td>
+ <td>Indexed on ISBN</td>
+ </tr>
+ <tr>
+ <td>Authors</td>
+ <td>Text File</td>
+ <td>Not Compressed</td>
+ <td>Not Indexed</td>
+ </tr>
+ <tr>
+ <td>Borrowers</td>
+ <td>Binary</td>
+ <td>Compressed</td>
+ <td>Indexed on ID</td>
+ </tr>
+</table>
+<h3>2. Logical Level (Conceptual Level)</h3>
+<p>At the logical level, the structure of the data is defined, including table names, columns, data types, and relationships.</p>
+<table>
+ <tbody><tr>
+ <th>Table</th>
+ <th>Attributes</th>
+ <th>Data Type</th>
+ <th>Constraints</th>
+ </tr>
+ <tr>
+ <td>Books</td>
+ <td>ISBN, Title, Author_ID, Copies</td>
+ <td>Integer, Varchar, Integer</td>
+ <td>Primary Key: ISBN, Foreign Key: Author_ID</td>
+ </tr>
+ <tr>
+ <td>Authors</td>
+ <td>Author_ID, Name, Country</td>
+ <td>Integer, Varchar</td>
+ <td>Primary Key: Author_ID</td>
+ </tr>
+ <tr>
+ <td>Borrowers</td>
+ <td>Borrower_ID, Name, Email</td>
+ <td>Integer, Varchar</td>
+ <td>Primary Key: Borrower_ID</td>
+ </tr>
+ <tr>
+ <td>BorrowedBooks</td>
+ <td>Borrower_ID, ISBN, DueDate</td>
+ <td>Integer, Integer, Date</td>
+ <td>Foreign Keys: Borrower_ID, ISBN</td>
+ </tr>
+</table>
+<h3>3. View Level (External Level)</h3>
+<p>At the view level, users only see the data that is relevant to them.</p>
+<h4>Librarian View</h4>
+<pre><code>CREATE VIEW Librarian_View AS
+SELECT Books.ISBN, Books.Title, Authors.Name AS Author, Borrowers.Name AS Borrower, BorrowedBooks.DueDate
+FROM Books
+JOIN Authors ON Books.Author_ID = Authors.Author_ID
+LEFT JOIN BorrowedBooks ON Books.ISBN = BorrowedBooks.ISBN
+LEFT JOIN Borrowers ON BorrowedBooks.Borrower_ID = Borrowers.Borrower_ID;
+</code></pre>
+<table>
+ <tbody><tr>
+ <th>ISBN</th>
+ <th>Title</th>
+ <th>Author</th>
+ <th>Borrower</th>
+ <th>DueDate</th>
+ </tr>
+ <tr>
+ <td>12345</td>
+ <td>Database Systems</td>
+ <td>C.J. Date</td>
+ <td>Alice Johnson</td>
+ <td>2024-11-10</td>
+ </tr>
+ <tr>
+ <td>67890</td>
+ <td>Data Abstraction</td>
+ <td>John Doe</td>
+ <td>NULL</td>
+ <td>NULL</td>
+ </tr>
+</table>
+<h4>Borrower View</h4>
+<pre><code>CREATE VIEW Borrower_View AS
+SELECT BorrowedBooks.ISBN, Books.Title, BorrowedBooks.DueDate
+FROM BorrowedBooks
+JOIN Books ON BorrowedBooks.ISBN = Books.ISBN
+WHERE BorrowedBooks.Borrower_ID = CURRENT_USER_ID;
+</code></pre>
+<table>
+ <tbody><tr>
+ <th>ISBN</th>
+ <th>Title</th>
+ <th>DueDate</th>
+ </tr>
+ <tr>
+ <td>12345</td>
+ <td>Database Systems</td>
+ <td>2024-11-10</td>
+ </tr>
+</table>
+<hr class=line-break>
+</div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

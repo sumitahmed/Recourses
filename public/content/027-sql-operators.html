@@ -1,0 +1,522 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/7</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+<h1>SQL Operators</h1>
+<p>SQL operators are divided into several categories, each serving a unique function to manipulate or filter data in SQL statements:</p>
+<ul>
+ <li>Arithmetic Operators</li>
+ <li>Comparison Operators</li>
+ <li>Logical Operators</li>
+ <li>Bitwise Operators</li>
+ <li>Set Operators</li>
+</ul>
+<br>
+<hr class=line-break>
+<h2>1. Arithmetic Operators</h2>
+<p>Arithmetic Operators perform mathematical operations on numeric data. These operators include addition, subtraction, multiplication, division, and modulo.</p>
+<table>
+ <tbody><tr>
+ <th>Operator</th>
+ <th>Symbol</th>
+ <th>Example</th>
+ <th>Result</th>
+ </tr>
+ <tr>
+ <td>Addition</td>
+ <td>+</td>
+ <td>SELECT 10 + 5</td>
+ <td>15</td>
+ </tr>
+ <tr>
+ <td>Subtraction</td>
+ <td>-</td>
+ <td>SELECT 10 - 5</td>
+ <td>5</td>
+ </tr>
+ <tr>
+ <td>Multiplication</td>
+ <td>*</td>
+ <td>SELECT 10 * 5</td>
+ <td>50</td>
+ </tr>
+ <tr>
+ <td>Division</td>
+ <td>/</td>
+ <td>SELECT 10 / 5</td>
+ <td>2</td>
+ </tr>
+ <tr>
+ <td>Modulo</td>
+ <td>%</td>
+ <td>SELECT 10 % 3</td>
+ <td>1</td>
+ </tr>
+</table>
+<h3>Example SQL Code</h3>
+<pre>SELECT
+    Employee_ID,
+    Salary,
+    Salary + 500 AS Salary_Bonus,
+    Salary * 0.1 AS Tax
+FROM
+    Employee;
+</pre>
+<br>
+<hr class=line-break>
+<h2>2. Comparison Operators</h2>
+<p>Comparison Operators are used to compare values in SQL queries. They return Boolean values (TRUE or FALSE) based on the comparison.</p>
+<table>
+ <tbody><tr>
+ <th>Operator</th>
+ <th>Symbol</th>
+ <th>Example</th>
+ <th>Result</th>
+ </tr>
+ <tr>
+ <td>Equal to</td>
+ <td>=</td>
+ <td>SELECT 10 = 5</td>
+ <td>FALSE</td>
+ </tr>
+ <tr>
+ <td>Not equal</td>
+ <td>&lt;&gt; or !=</td>
+ <td>SELECT 10 &lt;&gt; 5</td>
+ <td>TRUE</td>
+ </tr>
+ <tr>
+ <td>Greater than</td>
+ <td>&gt;</td>
+ <td>SELECT 10 &gt; 5</td>
+ <td>TRUE</td>
+ </tr>
+ <tr>
+ <td>Less than</td>
+ <td>&lt;</td>
+ <td>SELECT 10 &lt; 5</td>
+ <td>FALSE</td>
+ </tr>
+ <tr>
+ <td>Greater than or equal</td>
+ <td>&gt;=</td>
+ <td>SELECT 10 &gt;= 10</td>
+ <td>TRUE</td>
+ </tr>
+ <tr>
+ <td>Less than or equal</td>
+ <td>&lt;=</td>
+ <td>SELECT 10 &lt;= 10</td>
+ <td>TRUE</td>
+ </tr>
+</table>
+<h3>Example SQL Code</h3>
+<pre>SELECT
+    Employee_ID,
+    Name,
+    Salary
+FROM
+    Employee
+WHERE
+    Salary &gt; 50000;
+</pre>
+<br>
+<hr class=line-break>
+<h2>3. Logical Operators</h2>
+<p>Logical Operators are used to combine multiple conditions in SQL queries. These operators include AND, OR, and NOT.</p>
+<table>
+ <tbody><tr>
+ <th>Operator</th>
+ <th>Symbol</th>
+ <th>Example</th>
+ <th>Description</th>
+ </tr>
+ <tr>
+ <td>AND</td>
+ <td>AND</td>
+ <td>SELECT * FROM Employee WHERE Salary &gt; 50000 AND Department = 'HR'</td>
+ <td>Returns rows where both conditions are true</td>
+ </tr>
+ <tr>
+ <td>OR</td>
+ <td>OR</td>
+ <td>SELECT * FROM Employee WHERE Salary &gt; 50000 OR Department = 'HR'</td>
+ <td>Returns rows where at least one condition is true</td>
+ </tr>
+ <tr>
+ <td>NOT</td>
+ <td>NOT</td>
+ <td>SELECT * FROM Employee WHERE NOT Department = 'HR'</td>
+ <td>Returns rows where the condition is false</td>
+ </tr>
+</table>
+<h3>Example SQL Code</h3>
+<pre>SELECT
+    Employee_ID,
+    Name,
+    Salary,
+    Department
+FROM
+    Employee
+WHERE
+    Salary &gt; 50000 AND Department = 'HR';
+</pre>
+<br>
+<hr class=line-break>
+<h2>4. Bitwise Operators</h2>
+<p>Bitwise Operators perform bit-level operations on integer data. These operators are not as commonly used but are useful in certain situations, such as encoding or decoding data.</p>
+<table>
+ <tbody><tr>
+ <th>Operator</th>
+ <th>Symbol</th>
+ <th>Example</th>
+ <th>Result (in bits)</th>
+ </tr>
+ <tr>
+ <td>AND</td>
+ <td>&amp;</td>
+ <td>SELECT 5 &amp; 3</td>
+ <td>1 (0101 &amp; 0011 = 0001)</td>
+ </tr>
+ <tr>
+ <td>OR</td>
+ <td>|</td>
+ <td>SELECT 5 | 3</td>
+ <td>7 (0101 | 0011 = 0111)</td>
+ </tr>
+ <tr>
+ <td>XOR</td>
+ <td>^</td>
+ <td>SELECT 5 ^ 3</td>
+ <td>6 (0101 ^ 0011 = 0110)</td>
+ </tr>
+ <tr>
+ <td>NOT</td>
+ <td>~</td>
+ <td>SELECT ~5</td>
+ <td>-6 (Bitwise NOT of 5)</td>
+ </tr>
+</table>
+<h3>Example SQL Code</h3>
+<pre>SELECT
+    5 &amp; 3 AS Bitwise_AND,
+    5 | 3 AS Bitwise_OR,
+    5 ^ 3 AS Bitwise_XOR,
+    ~5 AS Bitwise_NOT;
+</pre>
+<br>
+<hr class=line-break>
+<h2>5. Set Operators</h2>
+<p>Set Operators are used to combine results from multiple SELECT queries. These operators include UNION, UNION ALL, INTERSECT, and EXCEPT.</p>
+<table>
+ <tbody><tr>
+ <th>Operator</th>
+ <th>Description</th>
+ </tr>
+ <tr>
+ <td>UNION</td>
+ <td>Combines results of two queries and removes duplicates</td>
+ </tr>
+ <tr>
+ <td>UNION ALL</td>
+ <td>Combines results of two queries without removing duplicates</td>
+ </tr>
+ <tr>
+ <td>INTERSECT</td>
+ <td>Returns common records between two queries</td>
+ </tr>
+ <tr>
+ <td>EXCEPT</td>
+ <td>Returns records from the first query that are not in the second query</td>
+ </tr>
+</table>
+<h3>Example SQL Code</h3>
+<pre>SELECT Name FROM Employee
+UNION
+SELECT Name FROM Customer;
+
+SELECT Name FROM Employee
+INTERSECT
+SELECT Name FROM Customer;
+</pre>
+<br>
+<hr class=line-break>
+<h2>Summary Table of SQL Operators</h2>
+<table>
+ <tbody><tr>
+ <th>Operator Type</th>
+ <th>Examples of Usage</th>
+ <th>Description</th>
+ </tr>
+ <tr>
+ <td>Arithmetic</td>
+ <td>+, -, *, /, %</td>
+ <td>Performs mathematical operations on numeric data</td>
+ </tr>
+ <tr>
+ <td>Comparison</td>
+ <td>=, &lt;&gt;, &gt;, &lt;, &gt;=, &lt;=</td>
+ <td>Compares two values and returns Boolean result</td>
+ </tr>
+ <tr>
+ <td>Logical</td>
+ <td>AND, OR, NOT</td>
+ <td>Combines multiple conditions in a query</td>
+ </tr>
+ <tr>
+ <td>Bitwise</td>
+ <td>&amp;, |, ^, ~</td>
+ <td>Performs bit-level operations</td>
+ </tr>
+ <tr>
+ <td>Set</td>
+ <td>UNION, UNION ALL, INTERSECT, EXCEPT</td>
+ <td>Combines results from multiple SELECT statements</td>
+ </tr>
+</table>
+<br>
+<hr class=line-break>
+<h2>Example: Sales Database Structure</h2>
+<h3>Sales Table</h3>
+<table>
+ <tbody><tr>
+ <th>Sale_ID</th>
+ <th>Customer_ID</th>
+ <th>Product_ID</th>
+ <th>Quantity</th>
+ <th>Unit_Price</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>101</td>
+ <td>201</td>
+ <td>3</td>
+ <td>100</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>102</td>
+ <td>202</td>
+ <td>5</td>
+ <td>200</td>
+ </tr>
+ <tr>
+ <td>3</td>
+ <td>103</td>
+ <td>201</td>
+ <td>2</td>
+ <td>100</td>
+ </tr>
+ <tr>
+ <td>4</td>
+ <td>104</td>
+ <td>203</td>
+ <td>1</td>
+ <td>300</td>
+ </tr>
+</table>
+<h3>Product Table</h3>
+<table>
+ <tbody><tr>
+ <th>Product_ID</th>
+ <th>Product_Name</th>
+ <th>Category</th>
+ </tr>
+ <tr>
+ <td>201</td>
+ <td>Laptop</td>
+ <td>Electronics</td>
+ </tr>
+ <tr>
+ <td>202</td>
+ <td>Chair</td>
+ <td>Furniture</td>
+ </tr>
+ <tr>
+ <td>203</td>
+ <td>Desk</td>
+ <td>Furniture</td>
+ </tr>
+</table>
+<h3>Customer Table</h3>
+<table>
+ <tbody><tr>
+ <th>Customer_ID</th>
+ <th>Customer_Name</th>
+ <th>City</th>
+ </tr>
+ <tr>
+ <td>101</td>
+ <td>Alice</td>
+ <td>New York</td>
+ </tr>
+ <tr>
+ <td>102</td>
+ <td>Bob</td>
+ <td>Los Angeles</td>
+ </tr>
+ <tr>
+ <td>103</td>
+ <td>Charlie</td>
+ <td>Chicago</td>
+ </tr>
+ <tr>
+ <td>104</td>
+ <td>Dave</td>
+ <td>New York</td>
+ </tr>
+</table>
+<h2>Example Queries</h2>
+<h3>1. Using Arithmetic Operators to Calculate Total Sale Amount</h3>
+<p>Calculate the total sale amount (quantity * unit price) for each sale.</p>
+<pre>SELECT
+    Sale_ID,
+    Product_ID,
+    Quantity,
+    Unit_Price,
+    Quantity * Unit_Price AS Total_Amount
+FROM
+    Sales;
+</pre>
+<h4>Result:</h4>
+<table>
+ <tbody><tr>
+ <th>Sale_ID</th>
+ <th>Product_ID</th>
+ <th>Quantity</th>
+ <th>Unit_Price</th>
+ <th>Total_Amount</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>201</td>
+ <td>3</td>
+ <td>100</td>
+ <td>300</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>202</td>
+ <td>5</td>
+ <td>200</td>
+ <td>1000</td>
+ </tr>
+ <tr>
+ <td>3</td>
+ <td>201</td>
+ <td>2</td>
+ <td>100</td>
+ <td>200</td>
+ </tr>
+ <tr>
+ <td>4</td>
+ <td>203</td>
+ <td>1</td>
+ <td>300</td>
+ <td>300</td>
+ </tr>
+</table>
+<h3>2. Using Comparison Operators to Filter Sales with High Quantities</h3>
+<p>Retrieve all sales where the quantity is greater than 3.</p>
+<pre>SELECT
+    Sale_ID,
+    Product_ID,
+    Quantity,
+    Unit_Price
+FROM
+    Sales
+WHERE
+    Quantity &gt; 3;
+</pre>
+<h4>Result:</h4>
+<table>
+ <tbody><tr>
+ <th>Sale_ID</th>
+ <th>Product_ID</th>
+ <th>Quantity</th>
+ <th>Unit_Price</th>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>202</td>
+ <td>5</td>
+ <td>200</td>
+ </tr>
+</table>
+<h3>3. Using Logical Operators to Combine Conditions</h3>
+<p>Retrieve sales where the quantity is greater than 2 and the unit price is above 150.</p>
+<pre>SELECT
+    Sale_ID,
+    Product_ID,
+    Quantity,
+    Unit_Price
+FROM
+    Sales
+WHERE
+    Quantity &gt; 2 AND Unit_Price &gt; 150;
+</pre>
+<h4>Result:</h4>
+<table>
+ <tbody><tr>
+ <th>Sale_ID</th>
+ <th>Product_ID</th>
+ <th>Quantity</th>
+ <th>Unit_Price</th>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>202</td>
+ <td>5</td>
+ <td>200</td>
+ </tr>
+</table>
+<h3>4. Using Bitwise Operators to Perform Bit-Level Operations</h3>
+<p>Let’s check a bitwise AND operation on some numeric values (this example assumes specific values are already known).</p>
+<pre>SELECT
+    5 &amp; 3 AS Bitwise_AND,
+    5 | 3 AS Bitwise_OR,
+    5 ^ 3 AS Bitwise_XOR,
+    ~5 AS Bitwise_NOT;
+</pre>
+<h4>Result:</h4>
+<table>
+ <tbody><tr>
+ <th>Bitwise_AND</th>
+ <th>Bitwise_OR</th>
+ <th>Bitwise_XOR</th>
+ <th>Bitwise_NOT</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>7</td>
+ <td>6</td>
+ <td>-6</td>
+ </tr>
+</table>
+<h3>5. Using Set Operators to Combine Queries</h3>
+<p>Find customers who bought either a Laptop or a Chair, using UNION.</p>
+<pre>SELECT Customer_Name
+FROM Customer
+WHERE Customer_ID IN (SELECT Customer_ID FROM Sales WHERE Product_ID = 201)  -- Customers who bought Laptop
+
+UNION
+
+SELECT Customer_Name
+FROM Customer
+WHERE Customer_ID IN (SELECT Customer_ID FROM Sales WHERE Product_ID = 202);  -- Customers who bought Chair
+</pre>
+<h4>Result:</h4>
+<table>
+ <tbody><tr>
+ <th>Customer_Name</th>
+ </tr>
+ <tr>
+ <td>Alice</td>
+ </tr>
+ <tr>
+ <td>Bob</td>
+ </tr>
+ <tr>
+ <td>Charlie</td>
+ </tr>
+</table>
+<hr class=line-break>
+</div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

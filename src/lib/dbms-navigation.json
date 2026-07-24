@@ -1,0 +1,946 @@
+[
+  {
+    "title": "Introduction to DBMS",
+    "slug": "introduction-to-dbms",
+    "order": 1,
+    "lessons": [
+      {
+        "title": "Data, Information & Database",
+        "slug": "001-data-information-database",
+        "moduleSlug": "introduction-to-dbms",
+        "url": "/resources/dbms/introduction-to-dbms/001-data-information-database",
+        "num": 1,
+        "lessonNum": 1,
+        "imageCount": 8
+      },
+      {
+        "title": "Types of Databases",
+        "slug": "002-types-of-databases",
+        "moduleSlug": "introduction-to-dbms",
+        "url": "/resources/dbms/introduction-to-dbms/002-types-of-databases",
+        "num": 2,
+        "lessonNum": 2,
+        "imageCount": 9
+      },
+      {
+        "title": "Database Management System",
+        "slug": "003-database-management-system",
+        "moduleSlug": "introduction-to-dbms",
+        "url": "/resources/dbms/introduction-to-dbms/003-database-management-system",
+        "num": 3,
+        "lessonNum": 3,
+        "imageCount": 8
+      },
+      {
+        "title": "Need, Advantages and Disadvantages of DBMS",
+        "slug": "004-need-advantages-and-disadvantages-of-dbms",
+        "moduleSlug": "introduction-to-dbms",
+        "url": "/resources/dbms/introduction-to-dbms/004-need-advantages-and-disadvantages-of-dbms",
+        "num": 4,
+        "lessonNum": 4,
+        "imageCount": 4
+      },
+      {
+        "title": "Data Abstraction in DBMS",
+        "slug": "005-data-abstraction-in-dbms",
+        "moduleSlug": "introduction-to-dbms",
+        "url": "/resources/dbms/introduction-to-dbms/005-data-abstraction-in-dbms",
+        "num": 5,
+        "lessonNum": 5,
+        "imageCount": 7
+      },
+      {
+        "title": "DBMS Architecture",
+        "slug": "006-dbms-architecture",
+        "moduleSlug": "introduction-to-dbms",
+        "url": "/resources/dbms/introduction-to-dbms/006-dbms-architecture",
+        "num": 6,
+        "lessonNum": 6,
+        "imageCount": 9
+      },
+      {
+        "title": "Database Users and Interactions",
+        "slug": "007-database-users-and-interactions",
+        "moduleSlug": "introduction-to-dbms",
+        "url": "/resources/dbms/introduction-to-dbms/007-database-users-and-interactions",
+        "num": 7,
+        "lessonNum": 7,
+        "imageCount": 7
+      }
+    ]
+  },
+  {
+    "title": "Data Models and ER Models",
+    "slug": "data-models-er-models",
+    "order": 2,
+    "lessons": [
+      {
+        "title": "DBMS Interfaces",
+        "slug": "008-dbms-interfaces",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/008-dbms-interfaces",
+        "num": 8,
+        "lessonNum": 1,
+        "imageCount": 9
+      },
+      {
+        "title": "Data Models and Their Types",
+        "slug": "009-data-models-and-their-types",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/009-data-models-and-their-types",
+        "num": 9,
+        "lessonNum": 2,
+        "imageCount": 10
+      },
+      {
+        "title": "ER Model and its Components",
+        "slug": "010-er-model-and-its-components",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/010-er-model-and-its-components",
+        "num": 10,
+        "lessonNum": 3,
+        "imageCount": 8
+      },
+      {
+        "title": "Types of Relationships in DBMS",
+        "slug": "011-types-of-relationships-in-dbms",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/011-types-of-relationships-in-dbms",
+        "num": 11,
+        "lessonNum": 4,
+        "imageCount": 9
+      },
+      {
+        "title": "Extended ER Features",
+        "slug": "012-extended-er-features",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/012-extended-er-features",
+        "num": 12,
+        "lessonNum": 5,
+        "imageCount": 8
+      },
+      {
+        "title": "Types of Inheritance",
+        "slug": "013-types-of-inheritance",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/013-types-of-inheritance",
+        "num": 13,
+        "lessonNum": 6,
+        "imageCount": 6
+      },
+      {
+        "title": "Entity-Relationship Diagram",
+        "slug": "014-entity-relationship-diagram",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/014-entity-relationship-diagram",
+        "num": 14,
+        "lessonNum": 7,
+        "imageCount": 8
+      },
+      {
+        "title": "Create ER Diagram",
+        "slug": "015-create-er-diagram",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/015-create-er-diagram",
+        "num": 15,
+        "lessonNum": 8,
+        "imageCount": 8
+      },
+      {
+        "title": "Relationships in ER Diagram",
+        "slug": "016-relationships-in-er-diagram",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/016-relationships-in-er-diagram",
+        "num": 16,
+        "lessonNum": 9,
+        "imageCount": 7
+      },
+      {
+        "title": "Relational Models",
+        "slug": "017-relational-models",
+        "moduleSlug": "data-models-er-models",
+        "url": "/resources/dbms/data-models-er-models/017-relational-models",
+        "num": 17,
+        "lessonNum": 10,
+        "imageCount": 9
+      }
+    ]
+  },
+  {
+    "title": "Relational Model and Normalization",
+    "slug": "relational-model-normalization",
+    "order": 3,
+    "lessons": [
+      {
+        "title": "Intension and Extension",
+        "slug": "018-intension-and-extension",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/018-intension-and-extension",
+        "num": 18,
+        "lessonNum": 1,
+        "imageCount": 8
+      },
+      {
+        "title": "Keys in DBMS",
+        "slug": "019-keys-in-dbms",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/019-keys-in-dbms",
+        "num": 19,
+        "lessonNum": 2,
+        "imageCount": 10
+      },
+      {
+        "title": "Data Normalization",
+        "slug": "020-data-normalization",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/020-data-normalization",
+        "num": 20,
+        "lessonNum": 3,
+        "imageCount": 11
+      },
+      {
+        "title": "Functional Dependency",
+        "slug": "021-functional-dependency",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/021-functional-dependency",
+        "num": 21,
+        "lessonNum": 4,
+        "imageCount": 7
+      },
+      {
+        "title": "Armstrong's Axioms",
+        "slug": "022-armstrongs-axioms",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/022-armstrongs-axioms",
+        "num": 22,
+        "lessonNum": 5,
+        "imageCount": 9
+      },
+      {
+        "title": "Inference Rules",
+        "slug": "023-inference-rules",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/023-inference-rules",
+        "num": 23,
+        "lessonNum": 6,
+        "imageCount": 7
+      },
+      {
+        "title": "Closure in Functional Dependencies",
+        "slug": "024-closure-in-functional-dependencies",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/024-closure-in-functional-dependencies",
+        "num": 24,
+        "lessonNum": 7,
+        "imageCount": 6
+      },
+      {
+        "title": "Denormalisation",
+        "slug": "025-denormalisation",
+        "moduleSlug": "relational-model-normalization",
+        "url": "/resources/dbms/relational-model-normalization/025-denormalisation",
+        "num": 25,
+        "lessonNum": 8,
+        "imageCount": 9
+      }
+    ]
+  },
+  {
+    "title": "SQL and Query Optimization",
+    "slug": "sql-query-optimization",
+    "order": 4,
+    "lessons": [
+      {
+        "title": "Database Languages",
+        "slug": "026-database-languages",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/026-database-languages",
+        "num": 26,
+        "lessonNum": 1,
+        "imageCount": 12
+      },
+      {
+        "title": "SQL Operators",
+        "slug": "027-sql-operators",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/027-sql-operators",
+        "num": 27,
+        "lessonNum": 2,
+        "imageCount": 7
+      },
+      {
+        "title": "Aggregates in SQL",
+        "slug": "028-aggregates-in-sql",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/028-aggregates-in-sql",
+        "num": 28,
+        "lessonNum": 3,
+        "imageCount": 8
+      },
+      {
+        "title": "SQL Clauses",
+        "slug": "029-sql-clauses",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/029-sql-clauses",
+        "num": 29,
+        "lessonNum": 4,
+        "imageCount": 7
+      },
+      {
+        "title": "SQL Joins",
+        "slug": "030-sql-joins",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/030-sql-joins",
+        "num": 30,
+        "lessonNum": 5,
+        "imageCount": 7
+      },
+      {
+        "title": "SQL Joins",
+        "slug": "031-sql-joins",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/031-sql-joins",
+        "num": 31,
+        "lessonNum": 6,
+        "imageCount": 7
+      },
+      {
+        "title": "SQL Joins",
+        "slug": "032-sql-joins",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/032-sql-joins",
+        "num": 32,
+        "lessonNum": 7,
+        "imageCount": 8
+      },
+      {
+        "title": "Views in SQL",
+        "slug": "033-views-in-sql",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/033-views-in-sql",
+        "num": 33,
+        "lessonNum": 8,
+        "imageCount": 8
+      },
+      {
+        "title": "Advanced Views in SQL",
+        "slug": "034-advanced-views-in-sql",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/034-advanced-views-in-sql",
+        "num": 34,
+        "lessonNum": 9,
+        "imageCount": 8
+      },
+      {
+        "title": "Indexed Views",
+        "slug": "035-indexed-views",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/035-indexed-views",
+        "num": 35,
+        "lessonNum": 10,
+        "imageCount": 8
+      },
+      {
+        "title": "SQL Subqueries",
+        "slug": "036-sql-subqueries",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/036-sql-subqueries",
+        "num": 36,
+        "lessonNum": 11,
+        "imageCount": 8
+      },
+      {
+        "title": "Types of SQL Subqueries",
+        "slug": "037-types-of-sql-subqueries",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/037-types-of-sql-subqueries",
+        "num": 37,
+        "lessonNum": 12,
+        "imageCount": 8
+      },
+      {
+        "title": "Query Processing",
+        "slug": "038-query-processing",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/038-query-processing",
+        "num": 38,
+        "lessonNum": 13,
+        "imageCount": 7
+      },
+      {
+        "title": "Query Optimization",
+        "slug": "039-query-optimization",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/039-query-optimization",
+        "num": 39,
+        "lessonNum": 14,
+        "imageCount": 7
+      },
+      {
+        "title": "Advanced Query Optimization",
+        "slug": "040-advanced-query-optimization",
+        "moduleSlug": "sql-query-optimization",
+        "url": "/resources/dbms/sql-query-optimization/040-advanced-query-optimization",
+        "num": 40,
+        "lessonNum": 15,
+        "imageCount": 7
+      }
+    ]
+  },
+  {
+    "title": "NoSQL Databases",
+    "slug": "nosql-databases",
+    "order": 5,
+    "lessons": [
+      {
+        "title": "NoSQL Databases",
+        "slug": "041-nosql-databases",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/041-nosql-databases",
+        "num": 41,
+        "lessonNum": 1,
+        "imageCount": 9
+      },
+      {
+        "title": "BASE Properties",
+        "slug": "042-base-properties",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/042-base-properties",
+        "num": 42,
+        "lessonNum": 2,
+        "imageCount": 6
+      },
+      {
+        "title": "NoSQL Languages",
+        "slug": "043-nosql-languages",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/043-nosql-languages",
+        "num": 43,
+        "lessonNum": 3,
+        "imageCount": 7
+      },
+      {
+        "title": "Graph Databases",
+        "slug": "044-graph-databases",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/044-graph-databases",
+        "num": 44,
+        "lessonNum": 4,
+        "imageCount": 7
+      },
+      {
+        "title": "In-Memory Databases",
+        "slug": "045-in-memory-databases",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/045-in-memory-databases",
+        "num": 45,
+        "lessonNum": 5,
+        "imageCount": 7
+      },
+      {
+        "title": "Partitioning in Databases",
+        "slug": "046-partitioning-in-databases",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/046-partitioning-in-databases",
+        "num": 46,
+        "lessonNum": 6,
+        "imageCount": 10
+      },
+      {
+        "title": "Types of Partitioning",
+        "slug": "047-types-of-partitioning",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/047-types-of-partitioning",
+        "num": 47,
+        "lessonNum": 7,
+        "imageCount": 7
+      },
+      {
+        "title": "Sharding in DBMS",
+        "slug": "048-sharding-in-dbms",
+        "moduleSlug": "nosql-databases",
+        "url": "/resources/dbms/nosql-databases/048-sharding-in-dbms",
+        "num": 48,
+        "lessonNum": 8,
+        "imageCount": 9
+      }
+    ]
+  },
+  {
+    "title": "Distributed Database Systems",
+    "slug": "distributed-database-systems",
+    "order": 6,
+    "lessons": [
+      {
+        "title": "Sharding in DBMS",
+        "slug": "049-sharding-in-dbms",
+        "moduleSlug": "distributed-database-systems",
+        "url": "/resources/dbms/distributed-database-systems/049-sharding-in-dbms",
+        "num": 49,
+        "lessonNum": 1,
+        "imageCount": 8
+      },
+      {
+        "title": "Distributed Database Systems",
+        "slug": "050-distributed-database-systems",
+        "moduleSlug": "distributed-database-systems",
+        "url": "/resources/dbms/distributed-database-systems/050-distributed-database-systems",
+        "num": 50,
+        "lessonNum": 2,
+        "imageCount": 10
+      },
+      {
+        "title": "Architecture of Distributed Database Systems",
+        "slug": "051-architecture-of-distributed-database-systems",
+        "moduleSlug": "distributed-database-systems",
+        "url": "/resources/dbms/distributed-database-systems/051-architecture-of-distributed-database-systems",
+        "num": 51,
+        "lessonNum": 3,
+        "imageCount": 10
+      },
+      {
+        "title": "Data Distribution Methods",
+        "slug": "052-data-distribution-methods",
+        "moduleSlug": "distributed-database-systems",
+        "url": "/resources/dbms/distributed-database-systems/052-data-distribution-methods",
+        "num": 52,
+        "lessonNum": 4,
+        "imageCount": 10
+      },
+      {
+        "title": "Fault Tolerance in Distributed Databases",
+        "slug": "053-fault-tolerance-in-distributed-databases",
+        "moduleSlug": "distributed-database-systems",
+        "url": "/resources/dbms/distributed-database-systems/053-fault-tolerance-in-distributed-databases",
+        "num": 53,
+        "lessonNum": 5,
+        "imageCount": 8
+      },
+      {
+        "title": "Load Balancing in Distributed Databases",
+        "slug": "054-load-balancing-in-distributed-databases",
+        "moduleSlug": "distributed-database-systems",
+        "url": "/resources/dbms/distributed-database-systems/054-load-balancing-in-distributed-databases",
+        "num": 54,
+        "lessonNum": 6,
+        "imageCount": 8
+      },
+      {
+        "title": "Data Replication Techniques",
+        "slug": "055-data-replication-techniques",
+        "moduleSlug": "distributed-database-systems",
+        "url": "/resources/dbms/distributed-database-systems/055-data-replication-techniques",
+        "num": 55,
+        "lessonNum": 7,
+        "imageCount": 11
+      }
+    ]
+  },
+  {
+    "title": "Transactions and Concurrency",
+    "slug": "transactions-concurrency",
+    "order": 7,
+    "lessons": [
+      {
+        "title": "Thomas' Rules",
+        "slug": "056-thomas-rules",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/056-thomas-rules",
+        "num": 56,
+        "lessonNum": 1,
+        "imageCount": 5
+      },
+      {
+        "title": "ACID Properties",
+        "slug": "057-acid-properties",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/057-acid-properties",
+        "num": 57,
+        "lessonNum": 2,
+        "imageCount": 7
+      },
+      {
+        "title": "CAP Theorem",
+        "slug": "058-cap-theorem",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/058-cap-theorem",
+        "num": 58,
+        "lessonNum": 3,
+        "imageCount": 10
+      },
+      {
+        "title": "Database Transactions",
+        "slug": "059-database-transactions",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/059-database-transactions",
+        "num": 59,
+        "lessonNum": 4,
+        "imageCount": 9
+      },
+      {
+        "title": "Concurrency Control in Databases",
+        "slug": "060-concurrency-control-in-databases",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/060-concurrency-control-in-databases",
+        "num": 60,
+        "lessonNum": 5,
+        "imageCount": 9
+      },
+      {
+        "title": "Locking Protocol",
+        "slug": "061-locking-protocol",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/061-locking-protocol",
+        "num": 61,
+        "lessonNum": 6,
+        "imageCount": 7
+      },
+      {
+        "title": "Timestamp Ordering Protocols in DBMS",
+        "slug": "062-timestamp-ordering-protocols-in-dbms",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/062-timestamp-ordering-protocols-in-dbms",
+        "num": 62,
+        "lessonNum": 7,
+        "imageCount": 8
+      },
+      {
+        "title": "Starvation in DBMS",
+        "slug": "063-starvation-in-dbms",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/063-starvation-in-dbms",
+        "num": 63,
+        "lessonNum": 8,
+        "imageCount": 5
+      },
+      {
+        "title": "Deadlock in DBMS",
+        "slug": "064-deadlock-in-dbms",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/064-deadlock-in-dbms",
+        "num": 64,
+        "lessonNum": 9,
+        "imageCount": 9
+      },
+      {
+        "title": "Concurrency Control in Distributed Databases",
+        "slug": "065-concurrency-control-in-distributed-databases",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/065-concurrency-control-in-distributed-databases",
+        "num": 65,
+        "lessonNum": 10,
+        "imageCount": 10
+      },
+      {
+        "title": "Serialization in Databases",
+        "slug": "066-serialization-in-databases",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/066-serialization-in-databases",
+        "num": 66,
+        "lessonNum": 11,
+        "imageCount": 7
+      },
+      {
+        "title": "Scheduling in Databases",
+        "slug": "067-scheduling-in-databases",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/067-scheduling-in-databases",
+        "num": 67,
+        "lessonNum": 12,
+        "imageCount": 6
+      },
+      {
+        "title": "Serialization Graphs in Databases",
+        "slug": "068-serialization-graphs-in-databases",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/068-serialization-graphs-in-databases",
+        "num": 68,
+        "lessonNum": 13,
+        "imageCount": 7
+      },
+      {
+        "title": "Isolation Levels",
+        "slug": "069-isolation-levels",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/069-isolation-levels",
+        "num": 69,
+        "lessonNum": 14,
+        "imageCount": 5
+      },
+      {
+        "title": "Managing Transaction Consistency and Concurrency",
+        "slug": "070-managing-transaction-consistency-and-concurrency",
+        "moduleSlug": "transactions-concurrency",
+        "url": "/resources/dbms/transactions-concurrency/070-managing-transaction-consistency-and-concurrency",
+        "num": 70,
+        "lessonNum": 15,
+        "imageCount": 6
+      }
+    ]
+  },
+  {
+    "title": "Triggers and Procedural Features",
+    "slug": "triggers-procedural-features",
+    "order": 8,
+    "lessons": [
+      {
+        "title": "Triggers in Databases",
+        "slug": "071-triggers-in-databases",
+        "moduleSlug": "triggers-procedural-features",
+        "url": "/resources/dbms/triggers-procedural-features/071-triggers-in-databases",
+        "num": 71,
+        "lessonNum": 1,
+        "imageCount": 7
+      },
+      {
+        "title": "Stored Procedures in Databases",
+        "slug": "072-stored-procedures-in-databases",
+        "moduleSlug": "triggers-procedural-features",
+        "url": "/resources/dbms/triggers-procedural-features/072-stored-procedures-in-databases",
+        "num": 72,
+        "lessonNum": 2,
+        "imageCount": 6
+      }
+    ]
+  },
+  {
+    "title": "Recovery and Backup",
+    "slug": "recovery-backup",
+    "order": 9,
+    "lessons": [
+      {
+        "title": "Database Recovery Management",
+        "slug": "073-database-recovery-management",
+        "moduleSlug": "recovery-backup",
+        "url": "/resources/dbms/recovery-backup/073-database-recovery-management",
+        "num": 73,
+        "lessonNum": 1,
+        "imageCount": 7
+      },
+      {
+        "title": "Database Backups",
+        "slug": "074-database-backups",
+        "moduleSlug": "recovery-backup",
+        "url": "/resources/dbms/recovery-backup/074-database-backups",
+        "num": 74,
+        "lessonNum": 2,
+        "imageCount": 6
+      }
+    ]
+  },
+  {
+    "title": "Indexing and Performance Tuning",
+    "slug": "indexing-performance-tuning",
+    "order": 10,
+    "lessons": [
+      {
+        "title": "Database Indexing",
+        "slug": "075-database-indexing",
+        "moduleSlug": "indexing-performance-tuning",
+        "url": "/resources/dbms/indexing-performance-tuning/075-database-indexing",
+        "num": 75,
+        "lessonNum": 1,
+        "imageCount": 9
+      },
+      {
+        "title": "Types of Database Indexing",
+        "slug": "076-types-of-database-indexing",
+        "moduleSlug": "indexing-performance-tuning",
+        "url": "/resources/dbms/indexing-performance-tuning/076-types-of-database-indexing",
+        "num": 76,
+        "lessonNum": 2,
+        "imageCount": 9
+      },
+      {
+        "title": "Indexing Techniques",
+        "slug": "077-indexing-techniques",
+        "moduleSlug": "indexing-performance-tuning",
+        "url": "/resources/dbms/indexing-performance-tuning/077-indexing-techniques",
+        "num": 77,
+        "lessonNum": 3,
+        "imageCount": 9
+      },
+      {
+        "title": "B- and B+ Trees",
+        "slug": "078-b-and-b-trees",
+        "moduleSlug": "indexing-performance-tuning",
+        "url": "/resources/dbms/indexing-performance-tuning/078-b-and-b-trees",
+        "num": 78,
+        "lessonNum": 4,
+        "imageCount": 12
+      }
+    ]
+  },
+  {
+    "title": "Database Monitoring and Caching",
+    "slug": "database-monitoring-caching",
+    "order": 11,
+    "lessons": [
+      {
+        "title": "Database Monitoring",
+        "slug": "079-database-monitoring",
+        "moduleSlug": "database-monitoring-caching",
+        "url": "/resources/dbms/database-monitoring-caching/079-database-monitoring",
+        "num": 79,
+        "lessonNum": 1,
+        "imageCount": 7
+      },
+      {
+        "title": "Performance Tuning",
+        "slug": "080-performance-tuning",
+        "moduleSlug": "database-monitoring-caching",
+        "url": "/resources/dbms/database-monitoring-caching/080-performance-tuning",
+        "num": 80,
+        "lessonNum": 2,
+        "imageCount": 6
+      },
+      {
+        "title": "Database Caching",
+        "slug": "081-database-caching",
+        "moduleSlug": "database-monitoring-caching",
+        "url": "/resources/dbms/database-monitoring-caching/081-database-caching",
+        "num": 81,
+        "lessonNum": 3,
+        "imageCount": 7
+      },
+      {
+        "title": "Database Caching Strategies",
+        "slug": "082-database-caching-strategies",
+        "moduleSlug": "database-monitoring-caching",
+        "url": "/resources/dbms/database-monitoring-caching/082-database-caching-strategies",
+        "num": 82,
+        "lessonNum": 4,
+        "imageCount": 7
+      }
+    ]
+  },
+  {
+    "title": "Security and Access Control",
+    "slug": "security-access-control",
+    "order": 12,
+    "lessons": [
+      {
+        "title": "Data Encryption in DBMS",
+        "slug": "083-data-encryption-in-dbms",
+        "moduleSlug": "security-access-control",
+        "url": "/resources/dbms/security-access-control/083-data-encryption-in-dbms",
+        "num": 83,
+        "lessonNum": 1,
+        "imageCount": 7
+      },
+      {
+        "title": "Database Security",
+        "slug": "084-database-security",
+        "moduleSlug": "security-access-control",
+        "url": "/resources/dbms/security-access-control/084-database-security",
+        "num": 84,
+        "lessonNum": 2,
+        "imageCount": 5
+      },
+      {
+        "title": "Encryption Techniques in DBMS",
+        "slug": "085-encryption-techniques-in-dbms",
+        "moduleSlug": "security-access-control",
+        "url": "/resources/dbms/security-access-control/085-encryption-techniques-in-dbms",
+        "num": 85,
+        "lessonNum": 3,
+        "imageCount": 6
+      },
+      {
+        "title": "Data Masking Techniques",
+        "slug": "086-data-masking-techniques",
+        "moduleSlug": "security-access-control",
+        "url": "/resources/dbms/security-access-control/086-data-masking-techniques",
+        "num": 86,
+        "lessonNum": 4,
+        "imageCount": 8
+      },
+      {
+        "title": "RBAC",
+        "slug": "087-rbac",
+        "moduleSlug": "security-access-control",
+        "url": "/resources/dbms/security-access-control/087-rbac",
+        "num": 87,
+        "lessonNum": 5,
+        "imageCount": 7
+      },
+      {
+        "title": "RBAC Models",
+        "slug": "088-rbac-models",
+        "moduleSlug": "security-access-control",
+        "url": "/resources/dbms/security-access-control/088-rbac-models",
+        "num": 88,
+        "lessonNum": 6,
+        "imageCount": 8
+      }
+    ]
+  },
+  {
+    "title": "Scalability and Big Data",
+    "slug": "scalability-big-data",
+    "order": 13,
+    "lessons": [
+      {
+        "title": "Database Scaling",
+        "slug": "089-database-scaling",
+        "moduleSlug": "scalability-big-data",
+        "url": "/resources/dbms/scalability-big-data/089-database-scaling",
+        "num": 89,
+        "lessonNum": 1,
+        "imageCount": 7
+      },
+      {
+        "title": "Big Data and DBMS",
+        "slug": "090-big-data-and-dbms",
+        "moduleSlug": "scalability-big-data",
+        "url": "/resources/dbms/scalability-big-data/090-big-data-and-dbms",
+        "num": 90,
+        "lessonNum": 2,
+        "imageCount": 11
+      },
+      {
+        "title": "DBaas",
+        "slug": "091-dbaas",
+        "moduleSlug": "scalability-big-data",
+        "url": "/resources/dbms/scalability-big-data/091-dbaas",
+        "num": 91,
+        "lessonNum": 3,
+        "imageCount": 9
+      }
+    ]
+  },
+  {
+    "title": "Data Warehousing and Migration",
+    "slug": "data-warehousing-migration",
+    "order": 14,
+    "lessons": [
+      {
+        "title": "Database Migration",
+        "slug": "092-database-migration",
+        "moduleSlug": "data-warehousing-migration",
+        "url": "/resources/dbms/data-warehousing-migration/092-database-migration",
+        "num": 92,
+        "lessonNum": 1,
+        "imageCount": 9
+      },
+      {
+        "title": "Data Warehousing",
+        "slug": "093-data-warehousing",
+        "moduleSlug": "data-warehousing-migration",
+        "url": "/resources/dbms/data-warehousing-migration/093-data-warehousing",
+        "num": 93,
+        "lessonNum": 2,
+        "imageCount": 6
+      },
+      {
+        "title": "Event-Driven Architecture",
+        "slug": "094-event-driven-architecture",
+        "moduleSlug": "data-warehousing-migration",
+        "url": "/resources/dbms/data-warehousing-migration/094-event-driven-architecture",
+        "num": 94,
+        "lessonNum": 3,
+        "imageCount": 6
+      }
+    ]
+  }
+]

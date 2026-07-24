@@ -1,0 +1,437 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/5</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div>
+ <h1>Thomas’ Rules for Timestamp Ordering</h1>
+ <p>The Timestamp Ordering Protocol is essential for concurrency control in databases, ordering transactions by their timestamps to prevent conflicts. Thomas’ Rules extend this protocol, particularly for write operations, to avoid unnecessary transaction aborts and improve system efficiency.</p>
+ <h2>Key Topics</h2>
+ <ul>
+ <li>Introduction to Thomas’ Rules</li>
+ <li>Limitations of Basic Timestamp Ordering</li>
+ <li>Thomas’ Read Rule</li>
+ <li>Thomas’ Write Rule</li>
+ <li>Timestamp Ordering and Write-Write Conflicts</li>
+ <li>Conflict Handling in Thomas’ Rule</li>
+ </ul>
+ <hr class=line-break>
+ <h2>Introduction to Thomas’ Rules</h2>
+ <p>Thomas' Rules are extensions to the basic Timestamp Ordering Protocol and allow certain writes to be skipped or ignored. This prevents unnecessary transaction aborts, especially in write-heavy environments, and improves throughput.</p>
+ <ul>
+ <li><strong>Key Principle:</strong> Transactions with outdated timestamps may not need to update data if a more recent transaction has already done so. This means we can sometimes ignore certain write operations, reducing conflicts.</li>
+ </ul>
+ <hr class=line-break>
+ <h2>Limitations of Basic Timestamp Ordering</h2>
+ <p>In traditional timestamp ordering:</p>
+ <ul>
+ <li>Transactions with later timestamps may be unnecessarily aborted due to conflicts.</li>
+ <li>Write-write conflicts often result in newer transactions being rolled back even when their changes wouldn’t affect data integrity.</li>
+ </ul>
+ <p>Thomas’ Rules allow us to bypass these limitations, particularly by ignoring certain outdated writes.</p>
+ <hr class=line-break>
+ <h2>Thomas’ Read Rule</h2>
+ <p><code>Thomas' Read Rule</code> specifies:</p>
+ <ul>
+ <li>A transaction <code>T</code> with timestamp <code>ts(T)</code> can read a data item only if <code>ts(T)</code> is greater than or equal to the item’s <code>Write Timestamp (WTS)</code>.</li>
+ <li>If this condition is met, the read proceeds; otherwise, the read is aborted.</li>
+ </ul>
+ <h3>Example Table for Thomas’ Read Rule</h3>
+ <table>
+ <tbody><tr>
+ <th>Step</th>
+ <th>Transaction</th>
+ <th>Operation</th>
+ <th>Condition</th>
+ <th>Action</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>T1 (ts=100)</td>
+ <td>R(A)</td>
+ <td>100 &gt;= WTS (80)</td>
+ <td>Read Allowed</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>T2 (ts=200)</td>
+ <td>R(A)</td>
+ <td>200 &gt;= WTS (100)</td>
+ <td>Read Allowed</td>
+ </tr>
+ </table>
+ <br>
+<hr class=line-break>
+ <h2>Thomas’ Write Rule</h2>
+ <p><code>Thomas' Write Rule</code> allows the system to handle writes more flexibly:</p>
+ <ul>
+ <li><strong>Outdated Write Check:</strong> If <code>ts(T) &lt; RTS</code>, abort <code>T</code> since the write is outdated.</li>
+ <li><strong>Redundant Write Check:</strong> If <code>ts(T) &lt; WTS</code>, ignore <code>T</code>'s write as it would be redundant.</li>
+ <li><strong>Proceed with Write:</strong> If <code>ts(T) &gt;= RTS</code> and <code>ts(T) &gt; WTS</code>, proceed with the write and update <code>WTS</code> to <code>ts(T)</code>.</li>
+ </ul>
+ <hr class=line-break>
+ <h2>Timestamp Ordering and Write-Write Conflicts</h2>
+ <p>
+ Timestamp ordering ensures consistency in a database by using transaction timestamps to control the order of operations like read and write. 
+ Write-Write conflicts occur when multiple transactions attempt to write to the same data item. These conflicts are managed using 
+ <strong>Thomas' Write Rule</strong>, which allows for outdated or redundant writes to be ignored while ensuring valid writes proceed.
+ </p>
+ <h3>Conflict Type and Resolution</h3>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>Conflict Type</th>
+ <th>Condition</th>
+ <th>Action</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>Outdated Write</strong></td>
+ <td>ts(T) &lt; RTS</td>
+ <td>Abort transaction</td>
+ </tr>
+ <tr>
+ <td><strong>Redundant Write</strong></td>
+ <td>ts(T) &lt; WTS</td>
+ <td>Ignore write</td>
+ </tr>
+ <tr>
+ <td><strong>Valid Write</strong></td>
+ <td>ts(T) ≥ RTS, ts(T) &gt; WTS</td>
+ <td>Proceed with Write</td>
+ </tr>
+ </tbody>
+ </table>
+ <h3>Example of Write-Write Conflict Handling</h3>
+ <p>
+ Assume we have a <strong>Customer Balance Table</strong>:
+ </p>
+ <pre>RTS = 200
+WTS = 180
+    </pre>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>Step</th>
+ <th>Transaction</th>
+ <th>Operation</th>
+ <th>Condition</th>
+ <th>Action</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td>T1 (ts=150)</td>
+ <td>W(Balance)</td>
+ <td>150 &lt; RTS (200)</td>
+ <td>Abort T1 (No update)</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>T2 (ts=210)</td>
+ <td>W(Balance)</td>
+ <td>210 &gt; RTS (200)</td>
+ <td>Proceed with Write (Update WTS = 210)</td>
+ </tr>
+ </tbody>
+ </table>
+ <p>
+ <strong>Explanation:</strong>
+ </p>
+ <ul>
+ <li>T1 is aborted as it would disrupt consistency.</li>
+ <li>T2 successfully writes, updating the WTS to 210.</li>
+ </ul>
+<br>
+<hr class=line-break>
+ <h3>Scenario Setup</h3>
+ <p>
+ Consider an Inventory Management System with a table <strong>Product</strong> that stores information about the stock level of products:
+ </p>
+ <pre>CREATE TABLE Product (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50),
+    StockLevel INT,
+    RTS INT DEFAULT 0,     -- Read Timestamp
+    WTS INT DEFAULT 0      -- Write Timestamp
+);
+    </pre>
+ <p>
+ <strong>Table Fields:</strong>
+ </p>
+ <ul>
+ <li>RTS (Read Timestamp): The last timestamp when StockLevel was read.</li>
+ <li>WTS (Write Timestamp): The last timestamp when StockLevel was updated.</li>
+ </ul>
+ <p>
+ Let’s assume two transactions:
+ </p>
+ <ul>
+ <li>Transaction T1 with a timestamp ts(T1) = 100</li>
+ <li>Transaction T2 with a timestamp ts(T2) = 200</li>
+ </ul>
+ <h4>Initial Table State</h4>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>ProductID</th>
+ <th>ProductName</th>
+ <th>StockLevel</th>
+ <th>RTS</th>
+ <th>WTS</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td>Widget</td>
+ <td>50</td>
+ <td>80</td>
+ <td>90</td>
+ </tr>
+ </tbody>
+ </table>
+ <h4>Condition Check for Read</h4>
+ <p>
+ According to Thomas’ Read Rule, a transaction can read a data item if ts(T) ≥ WTS.
+ </p>
+ <pre>-- T1 attempts to read
+SELECT CASE
+    WHEN 100 &gt;= WTS THEN 'Read Allowed'
+    ELSE 'Abort Read'
+END AS T1_Read_Status
+FROM Product
+WHERE ProductID = 1;
+
+-- T2 attempts to read
+SELECT CASE
+    WHEN 200 &gt;= WTS THEN 'Read Allowed'
+    ELSE 'Abort Read'
+END AS T2_Read_Status
+FROM Product
+WHERE ProductID = 1;
+    </pre>
+ <p><strong>Output:</strong></p>
+ <ul>
+ <li>T1: Since 100 ≥ 90, the read is allowed.</li>
+ <li>T2: Since 200 ≥ 90, the read is also allowed.</li>
+ </ul>
+ <p>After each read, we should update the RTS to the timestamp of the transaction:</p>
+ <pre>-- Update RTS after successful read
+UPDATE Product
+SET RTS = 100  -- For T1's read
+WHERE ProductID = 1;
+
+-- Updating RTS again after T2's read
+UPDATE Product
+SET RTS = 200
+WHERE ProductID = 1;
+    </pre>
+ <h4>Table State After Read</h4>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>ProductID</th>
+ <th>ProductName</th>
+ <th>StockLevel</th>
+ <th>RTS</th>
+ <th>WTS</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td>Widget</td>
+ <td>50</td>
+ <td>200</td>
+ <td>90</td>
+ </tr>
+ </tbody>
+ </table>
+ <br>
+ <hr class=line-break>
+<h2>Thomas’ Write Rule Example with SQL</h2>
+ <h3>Scenario</h3>
+ <p>
+ Transaction T1 (timestamp 100) and Transaction T2 (timestamp 200) both want to update the 
+ <strong>StockLevel</strong> for <code>ProductID = 1</code>.
+ </p>
+ <h4>Initial Table State</h4>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>ProductID</th>
+ <th>ProductName</th>
+ <th>StockLevel</th>
+ <th>RTS</th>
+ <th>WTS</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td>Widget</td>
+ <td>50</td>
+ <td>200</td>
+ <td>90</td>
+ </tr>
+ </tbody>
+ </table>
+ <h4>Conditions for Write</h4>
+ <p>
+ Using Thomas’ Write Rule:
+ </p>
+ <ul>
+ <li>Abort T1 if <code>ts(T1) &lt; RTS</code>.</li>
+ <li>Ignore T1 if <code>ts(T1) &lt; WTS</code>.</li>
+ <li>Proceed with the write if <code>ts(T1) ≥ RTS</code> and <code>ts(T1) &gt; WTS</code>.</li>
+ </ul>
+ <h4>SQL Example</h4>
+ <h5>Step 1: T1 attempts to write</h5>
+ <pre>-- T1 attempts to write to StockLevel
+SELECT CASE
+    WHEN 100 &lt; RTS THEN 'Abort T1 (Outdated Write)'
+    WHEN 100 &lt; WTS THEN 'Ignore T1 Write (Redundant Write)'
+    ELSE 'Proceed with T1 Write'
+END AS T1_Write_Status
+FROM Product
+WHERE ProductID = 1;
+    </pre>
+ <p>
+ <strong>Output for T1:</strong> Since <code>100 &lt; RTS (200)</code>, T1’s write is aborted due to an outdated timestamp.
+ </p>
+ <h5>Step 2: T2 attempts to write</h5>
+ <pre>-- T2 attempts to write to StockLevel
+SELECT CASE
+    WHEN 200 &lt; RTS THEN 'Abort T2 (Outdated Write)'
+    WHEN 200 &lt; WTS THEN 'Ignore T2 Write (Redundant Write)'
+    ELSE 'Proceed with T2 Write'
+END AS T2_Write_Status
+FROM Product
+WHERE ProductID = 1;
+    </pre>
+ <p>
+ <strong>Output for T2:</strong> Since <code>200 ≥ RTS (200)</code> and <code>200 &gt; WTS (90)</code>, T2’s write is allowed.
+ </p>
+ <h3>Updating the Table</h3>
+ <p>
+ Since T2’s write is allowed, we update the <strong>StockLevel</strong> and set the <strong>WTS</strong> to 200.
+ </p>
+ <pre>-- T2's successful write to StockLevel
+UPDATE Product
+SET StockLevel = 60,  -- New stock level updated by T2
+    WTS = 200
+WHERE ProductID = 1;
+    </pre>
+ <h4>Final Table State</h4>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>ProductID</th>
+ <th>ProductName</th>
+ <th>StockLevel</th>
+ <th>RTS</th>
+ <th>WTS</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td>Widget</td>
+ <td>60</td>
+ <td>200</td>
+ <td>200</td>
+ </tr>
+ </tbody>
+ </table>
+<br>
+<hr class=line-break>
+ <h2>Example with Write-Write Conflict Handling</h2>
+ <p>
+ In real-world scenarios, write-write conflicts are common. Let’s go through an example where two transactions attempt to write to the same data item and we apply Thomas' Rules to resolve these conflicts.
+ </p>
+ <h3>Scenario</h3>
+ <p>
+ Transaction T3 with timestamp 300 attempts to write <strong>StockLevel</strong>.
+ Transaction T4 with timestamp 150 also attempts to write <strong>StockLevel</strong>.
+ </p>
+ <h4>Initial Table State for Write-Write Conflict</h4>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>ProductID</th>
+ <th>ProductName</th>
+ <th>StockLevel</th>
+ <th>RTS</th>
+ <th>WTS</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td>Widget</td>
+ <td>60</td>
+ <td>200</td>
+ <td>200</td>
+ </tr>
+ </tbody>
+ </table>
+ <h4>SQL Example for Write-Write Conflict</h4>
+ <h5>Step 1: T3 attempts to write</h5>
+ <pre>-- T3 attempts to write to StockLevel
+SELECT CASE
+    WHEN 300 &lt; RTS THEN 'Abort T3 (Outdated Write)'
+    WHEN 300 &lt; WTS THEN 'Ignore T3 Write (Redundant Write)'
+    ELSE 'Proceed with T3 Write'
+END AS T3_Write_Status
+FROM Product
+WHERE ProductID = 1;
+    </pre>
+ <p>
+ <strong>Output for T3:</strong> Since <code>300 ≥ RTS</code> and <code>300 &gt; WTS</code>, T3 is allowed to write.
+ </p>
+ <h5>Step 2: T4 attempts to write</h5>
+ <pre>-- T4 attempts to write to StockLevel
+SELECT CASE
+    WHEN 150 &lt; RTS THEN 'Abort T4 (Outdated Write)'
+    WHEN 150 &lt; WTS THEN 'Ignore T4 Write (Redundant Write)'
+    ELSE 'Proceed with T4 Write'
+END AS T4_Write_Status
+FROM Product
+WHERE ProductID = 1;
+    </pre>
+ <p>
+ <strong>Output for T4:</strong> Since <code>150 &lt; RTS (200)</code>, T4’s write is aborted due to an outdated timestamp.
+ </p>
+ <h3>Final Table Update after T3's Write</h3>
+ <p>
+ Since T3 was allowed to write, we update <strong>StockLevel</strong> and set <strong>WTS</strong> to 300.
+ </p>
+ <pre>-- T3's successful write to StockLevel
+UPDATE Product
+SET StockLevel = 70,  -- Updated stock level by T3
+    WTS = 300
+WHERE ProductID = 1;
+    </pre>
+ <h4>Final Table State after Conflict Resolution</h4>
+ <table border=1>
+ <thead>
+ <tr>
+ <th>ProductID</th>
+ <th>ProductName</th>
+ <th>StockLevel</th>
+ <th>RTS</th>
+ <th>WTS</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td>Widget</td>
+ <td>70</td>
+ <td>200</td>
+ <td>300</td>
+ </tr>
+ </tbody>
+ </table>
+<br>
+<hr>
+ </div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

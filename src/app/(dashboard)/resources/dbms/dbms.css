@@ -1,0 +1,387 @@
+/* =========================================
+   DBMS COURSE CSS - Scoped
+   ========================================= */
+
+.dbms-course-layout {
+  --brand: #EA763F;
+  --brand-dark: #d4662f;
+  --bg: #0e1117;
+  --bg2: #161A20;
+  --bg3: #1e2530;
+  --border: #2a2f3a;
+  --content-bg: #121212;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  display: flex;
+  height: calc(100vh - 56px); /* subtract topbar height */
+  margin: -24px; /* offset dashboard padding */
+  overflow: hidden;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   SCROLLBARS
+   ========================================= */
+.premium-scrollbar::-webkit-scrollbar { width: 4px; }
+.premium-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.premium-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(234, 118, 63, 0.3);
+  border-radius: 9999px;
+}
+.premium-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(234, 118, 63, 0.6); }
+
+.content-scrollbar::-webkit-scrollbar { width: 6px; }
+.content-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.content-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 9999px;
+}
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+.dbms-course-layout .sidebar {
+  width: 192px;
+  min-width: 192px;
+  background-color: var(--bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  z-index: 30;
+}
+
+.sidebar-header {
+  padding: 12px 12px 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sidebar-search {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sidebar-search input {
+  width: 100%;
+  padding: 6px 10px 6px 32px;
+  background-color: var(--bg2);
+  color: var(--text-primary);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.sidebar-search input::placeholder { color: var(--text-muted); }
+.sidebar-search input:focus { box-shadow: 0 0 0 1px rgba(234,118,63,0.4); }
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 4px;
+}
+
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  margin-top: 4px;
+  user-select: none;
+}
+
+.module-header:hover { background: var(--bg2); color: var(--text-secondary); }
+.module-header.active { color: var(--text-secondary); }
+
+.module-chevron {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.module-chevron.open { transform: rotate(90deg); }
+
+.lesson-list { padding-left: 12px; }
+
+.lesson-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+  text-decoration: none;
+  margin: 1px 0;
+}
+
+.lesson-item:hover { background: var(--bg2); color: var(--text-primary); }
+.lesson-item.active {
+  background: rgba(234, 118, 63, 0.12);
+  color: var(--brand);
+  font-weight: 500;
+}
+
+.lesson-radio {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-radio.active {
+  border-color: var(--brand);
+  background: var(--brand);
+}
+
+.lesson-radio.active::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* MAIN CONTENT */
+.dbms-course-layout .main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--content-bg);
+}
+
+.tab-bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+  padding: 0 16px;
+  height: 48px;
+  position: relative;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 20px;
+  height: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.tab-item:hover { color: var(--text-primary); }
+.tab-item.active {
+  color: var(--brand);
+  border-bottom-color: var(--brand);
+}
+
+.tab-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theory-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.content-panel {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--content-bg);
+}
+
+.lesson-content-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+/* =========================================
+   EDITORIAL CONTENT
+   ========================================= */
+
+.coreSubject h1,
+.coreSubject h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 24px 0 12px;
+  line-height: 1.3;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.coreSubject h1:first-child,
+.coreSubject h2:first-child { margin-top: 0; }
+
+.coreSubject h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 20px 0 10px;
+}
+
+.coreSubject h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand);
+  margin: 16px 0 8px;
+}
+
+.coreSubject p {
+  color: #cbd5e1;
+  line-height: 1.75;
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+
+.coreSubject code:not(pre code) {
+  background: rgba(234, 118, 63, 0.1);
+  color: var(--brand);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  border: 1px solid rgba(234, 118, 63, 0.2);
+}
+
+.coreSubject pre {
+  background: #0d1117 !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  overflow-x: auto;
+  position: relative;
+}
+
+.coreSubject pre code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.6;
+  color: #e2e8f0;
+  background: none !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.coreSubject table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.coreSubject thead tr { background: var(--bg2); }
+
+.coreSubject th,
+.coreSubject td {
+  padding: 12px 16px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+.coreSubject th { font-weight: 600; color: var(--brand); font-size: 15px; }
+.coreSubject td { color: #94a3b8; vertical-align: top; line-height: 1.5; }
+.coreSubject tr:last-child td { border-bottom: none; }
+.coreSubject tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.coreSubject ul, .coreSubject ol { margin: 12px 0 16px 20px; color: #cbd5e1; line-height: 1.75; font-size: 16px; }
+.coreSubject li { margin: 4px 0; }
+.coreSubject li::marker { color: var(--brand); }
+
+.coreSubject blockquote {
+  border-left: 3px solid var(--brand);
+  background: rgba(234, 118, 63, 0.06);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 16px 0;
+  color: #cbd5e1;
+  font-size: 16px;
+}
+
+.coreSubject strong { color: var(--text-primary); font-weight: 600; }
+
+.coreSubject .summary-box,
+.coreSubject [class*="summary"] {
+  background: rgba(234, 118, 63, 0.08);
+  border: 1px solid rgba(234, 118, 63, 0.2);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+
+/* Code copy button */
+.code-block-wrapper { position: relative; }
+.copy-btn {
+  position: absolute; top: 10px; right: 10px; padding: 4px 10px;
+  background: rgba(30,37,48,0.9); border: 1px solid var(--border);
+  border-radius: 6px; color: #94a3b8; font-size: 11px; font-family: inherit;
+  cursor: pointer; opacity: 0; transition: opacity 0.15s;
+}
+.code-block-wrapper:hover .copy-btn { opacity: 1; }
+.copy-btn:hover { color: #EA763F; border-color: rgba(234,118,63,0.4); }
+
+@media (max-width: 768px) {
+  .dbms-course-layout .sidebar { width: 0; min-width: 0; display: none; }
+  .dbms-course-layout .sidebar.mobile-open { display: flex; width: 256px; min-width: 256px; position: fixed; left: 0; top: 0; bottom: 0; z-index: 50; }
+  .mobile-header { display: flex; }
+}
+
+@media (min-width: 769px) { .mobile-header { display: none; } }
+@media (min-width: 1024px) { .toc-panel { display: block !important; } }
+
+.mobile-header {
+  height: 48px; background: var(--bg); border-bottom: 1px solid var(--border);
+  padding: 0 16px; align-items: center; justify-content: space-between; flex-shrink: 0;
+}
+
+.kbd { display: inline-flex; align-items: center; padding: 2px 6px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-family: monospace; }

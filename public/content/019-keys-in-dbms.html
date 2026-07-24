@@ -1,0 +1,169 @@
+<div class="editorial-content max-w-3xl px-4 mt-2"><div class="coreSubject dark:text-zinc-300"><br>
+<div class=image-carousel-container><div class=carousel-container><div class=carousel style=transform:translateX(0%)><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div><div class=carousel-image></div></div><div class=control-container><div class=control-container-2><button class="image-carousel-arrow image-carousel-left-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"></path></svg></button><span class=image-number></span><span class=img-number>1/9</span><button class="image-carousel-arrow image-carousel-right-arrow group event-attached"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg></button></div><button class="image-carousel-control-button image-carousel-down-button group event-attached" data-tooltip-id=Open-Modal data-tooltip-content="Open Modal" data-tooltip-place=top><svg width=20 height=20 viewBox="0 0 24 24" fill=none strokewidth=2 strokelinecap=round strokelinejoin=round class="lucide lucide-external-link"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></button></div></div></div><h1>Types of Keys in Database</h1>
+<p>Keys are attributes or combinations of attributes that uniquely identify rows within a table in a relational database. They are critical in defining relationships between tables, ensuring data integrity, and preventing duplicate records. Different types of keys serve various roles within a database, from identifying records to establishing connections between tables.</p>
+<hr class=line-break>
+<h2>1. Primary Key</h2>
+<p>A <strong>Primary Key</strong> is a unique identifier for each record in a table. It ensures that no two rows have the same primary key value, thus maintaining data integrity. Each table can have only one primary key, and the values in the primary key column(s) cannot be null.</p>
+<ul>
+ <li><strong>Characteristics:</strong> Uniquely identifies each record, enforces uniqueness and non-null constraints, and each table has only one primary key.</li>
+</ul>
+<p><strong>Example:</strong> In a <code>Student</code> table, <code>Student_ID</code> could serve as a primary key:</p>
+<table>
+ <tbody><tr>
+ <th>Student_ID</th>
+ <th>Name</th>
+ <th>Age</th>
+ </tr>
+ <tr>
+ <td>101</td>
+ <td>Alice</td>
+ <td>22</td>
+ </tr>
+ <tr>
+ <td>102</td>
+ <td>Bob</td>
+ <td>23</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>2. Candidate Key</h2>
+<p>A <strong>Candidate Key</strong> is an attribute, or a set of attributes, that can uniquely identify a row in a table. There can be multiple candidate keys in a table, but only one can be chosen as the primary key. Candidate keys must be unique and should not contain null values.</p>
+<ul>
+ <li><strong>Characteristics:</strong> Can uniquely identify each record, multiple candidate keys can exist in a single table, and one of the candidate keys is chosen as the primary key.</li>
+</ul>
+<p><strong>Example:</strong> In an <code>Employee</code> table with attributes <code>Employee_ID</code> and <code>Social_Security_Number</code> (SSN), both <code>Employee_ID</code> and <code>SSN</code> can uniquely identify each employee, making them candidate keys.</p>
+<hr class=line-break>
+<h2>3. Alternate Key</h2>
+<p>An <strong>Alternate Key</strong> is a candidate key that is not selected as the primary key. It is an alternate way of uniquely identifying a record within a table, and it maintains the uniqueness requirement.</p>
+<ul>
+ <li><strong>Characteristics:</strong> Serves as a unique identifier like the primary key, and is one of the candidate keys that wasn’t chosen as the primary key.</li>
+</ul>
+<p><strong>Example:</strong> In the <code>Employee</code> table, if <code>Employee_ID</code> is chosen as the primary key, then <code>SSN</code> becomes an alternate key.</p>
+<hr class=line-break>
+<h2>4. Composite Key</h2>
+<p>A <strong>Composite Key</strong> is a combination of two or more attributes that together uniquely identify a row. Composite keys are used when a single attribute cannot uniquely identify records.</p>
+<ul>
+ <li><strong>Characteristics:</strong> Consists of two or more attributes, used when no single attribute can serve as a unique identifier, and each attribute in a composite key may not be unique on its own.</li>
+</ul>
+<p><strong>Example:</strong> In an <code>Order</code> table, both <code>Order_ID</code> and <code>Product_ID</code> together uniquely identify each row:</p>
+<table>
+ <tbody><tr>
+ <th>Order_ID</th>
+ <th>Product_ID</th>
+ <th>Quantity</th>
+ </tr>
+ <tr>
+ <td>5001</td>
+ <td>101</td>
+ <td>3</td>
+ </tr>
+ <tr>
+ <td>5001</td>
+ <td>102</td>
+ <td>1</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>5. Super Key</h2>
+<p>A <strong>Super Key</strong> is any combination of attributes that can uniquely identify a row in a table. Super keys include candidate keys as well as other sets of attributes that uniquely identify records.</p>
+<ul>
+ <li><strong>Characteristics:</strong> Contains at least one attribute or a combination that uniquely identifies records, and can include extra attributes beyond what is required to ensure uniqueness.</li>
+</ul>
+<p><strong>Example:</strong> In a <code>Student</code> table, both {<code>Student_ID</code>} and {<code>Student_ID</code>, <code>Name</code>} are super keys, as both uniquely identify a student, but only {<code>Student_ID</code>} is a candidate key (minimal super key).</p>
+<hr class=line-break>
+<h2>6. Foreign Key</h2>
+<p>A <strong>Foreign Key</strong> is a column or set of columns in one table that establishes a link to the primary key of another table. Foreign keys are used to create relationships between tables and maintain referential integrity.</p>
+<ul>
+ <li><strong>Characteristics:</strong> Links two tables by referring to the primary key of another table, and enforces referential integrity.</li>
+</ul>
+<p><strong>Example:</strong> In an <code>Enrollment</code> table, <code>Student_ID</code> can be a foreign key referencing the <code>Student</code> table’s primary key <code>Student_ID</code> to establish a relationship between the tables:</p>
+<table>
+ <tbody><tr>
+ <th>Enrollment_ID</th>
+ <th>Student_ID</th>
+ <th>Course_ID</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>101</td>
+ <td>CS101</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>102</td>
+ <td>MA202</td>
+ </tr>
+</table>
+<hr class=line-break>
+<h2>7. Unique Key</h2>
+<p>A <strong>Unique Key</strong> is a constraint that ensures all values in a column are unique across the table. Unique keys can have null values (typically one null), unlike primary keys, which cannot be null.</p>
+<ul>
+ <li><strong>Characteristics:</strong> Enforces uniqueness across values in a column or set of columns, and can allow null values (usually one null per unique key).</li>
+</ul>
+<p><strong>Example:</strong> In a <code>User</code> table, <code>Email</code> can be a unique key, as each user’s email must be distinct:</p>
+<table>
+ <tbody><tr>
+ <th>User_ID</th>
+ <th>Name</th>
+ <th>Email</th>
+ </tr>
+ <tr>
+ <td>1</td>
+ <td>Alice</td>
+ <td>alice@example.com</td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td>Bob</td>
+ <td>bob@example.com</td>
+ </tr>
+</table>
+<br>
+
+<br>
+<hr class=line-break>
+<h2>Summary Table of Key Types</h2>
+<table>
+ <tbody><tr>
+ <th>Key Type</th>
+ <th>Description</th>
+ <th>Example</th>
+ </tr>
+ <tr>
+ <td>Primary Key</td>
+ <td>Unique identifier for each row; does not allow nulls.</td>
+ <td>Student_ID in Student table</td>
+ </tr>
+ <tr>
+ <td>Candidate Key</td>
+ <td>Attribute(s) that can uniquely identify rows; one is chosen as the primary key.</td>
+ <td>Employee_ID and SSN in Employee table</td>
+ </tr>
+ <tr>
+ <td>Alternate Key</td>
+ <td>Candidate key not chosen as primary key.</td>
+ <td>SSN if Employee_ID is the primary key</td>
+ </tr>
+ <tr>
+ <td>Composite Key</td>
+ <td>Combines two or more attributes to uniquely identify rows.</td>
+ <td>{Order_ID, Product_ID} in Order table</td>
+ </tr>
+ <tr>
+ <td>Super Key</td>
+ <td>Any set of attributes that uniquely identifies rows, possibly with extra attributes.</td>
+ <td>{Student_ID}, {Student_ID, Name}</td>
+ </tr>
+ <tr>
+ <td>Foreign Key</td>
+ <td>Links two tables by referring to the primary key of another table, ensuring referential integrity.</td>
+ <td>Student_ID in Enrollment table referencing Student table</td>
+ </tr>
+ <tr>
+ <td>Unique Key</td>
+ <td>Enforces unique values across a column; allows nulls (usually one null).</td>
+ <td>Email in User table</td>
+ </tr>
+</table>
+<hr class=line-break>
+</div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div></div><div class="fixed inset-0 bg-zinc-900 bg-opacity-70 z-60 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed md:block hidden top-0 right-0 h-full border-l border-zinc-300 dark:border-zinc-800 w-1/3 bg-white dark:bg-[#121212] shadow-lg transform transition-transform duration-300 translate-x-full overflow-scroll scrollbar-none"><div><div class="flex justify-between items-center py-4 px-6"><span class="text-[18px] font-medium">Daily Planner</span><svg class=cursor-pointer width=11 height=10 viewBox="0 0 11 10" fill=none xmlns=http://www.w3.org/2000/svg><path d="M5.50059 6.05059L1.82559 9.72559C1.68809 9.86309 1.51309 9.93184 1.30059 9.93184C1.08809 9.93184 0.913086 9.86309 0.775586 9.72559C0.638086 9.58809 0.569336 9.41309 0.569336 9.20059C0.569336 8.98809 0.638086 8.81309 0.775586 8.67559L4.45059 5.00059L0.775586 1.32559C0.638086 1.18809 0.569336 1.01309 0.569336 0.800586C0.569336 0.588086 0.638086 0.413086 0.775586 0.275586C0.913086 0.138086 1.08809 0.0693359 1.30059 0.0693359C1.51309 0.0693359 1.68809 0.138086 1.82559 0.275586L5.50059 3.95059L9.17559 0.275586C9.31309 0.138086 9.48809 0.0693359 9.70059 0.0693359C9.91309 0.0693359 10.0881 0.138086 10.2256 0.275586C10.3631 0.413086 10.4318 0.588086 10.4318 0.800586C10.4318 1.01309 10.3631 1.18809 10.2256 1.32559L6.55059 5.00059L10.2256 8.67559C10.3631 8.81309 10.4318 8.98809 10.4318 9.20059C10.4318 9.41309 10.3631 9.58809 10.2256 9.72559C10.0881 9.86309 9.91309 9.93184 9.70059 9.93184C9.48809 9.93184 9.31309 9.86309 9.17559 9.72559L5.50059 6.05059Z" class="fill-[#919EAB] dark:fill-[#808080]"></path></svg></div><div class="border-b border-[#DFE3E8] dark:border-[#363636]"></div><div class="p-4 flex-col flex"><div class="px-4 py-3 flex flex-col border border-[#DFE3E8] dark:border-[#363636] rounded-md"><form class="flex flex-col"><div class="flex gap-x-3 items-center"><svg xmlns=http://www.w3.org/2000/svg width=20 height=20 viewBox="0 0 24 24" fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round class="lucide lucide-pencil dark:stroke-[#ADADAD] stroke-[#637381]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg><input type=text placeholder="Add a task" name=task class="text-[16px] bg-transparent border-none focus:outline-none focus:ring-0 w-full" value></div><div class="border-b mt-2 border-[#DFE3E8] dark:border-[#363636]"></div><div class="flex justify-between items-center mt-2"><div class="flex items-center"><svg width=20 height=20 viewBox="0 0 13 15" fill=none xmlns=http://www.w3.org/2000/svg class=cursor-pointer><path d="M9.16669 1.5V4.16667M3.83335 1.5V4.16667M1.16669 6.83333H11.8334M3.16669 8.83333H3.17535M5.17336 8.83333H5.17669M7.17336 8.83333H7.17669M9.1767 8.83333H9.18003M7.1767 10.8333H7.18003M3.17336 10.8333H3.17669M5.17336 10.8333H5.17669M1.16669 4.16667C1.16669 3.81304 1.30716 3.47391 1.55721 3.22386C1.80726 2.97381 2.1464 2.83333 2.50002 2.83333H10.5C10.8536 2.83333 11.1928 2.97381 11.4428 3.22386C11.6929 3.47391 11.8334 3.81304 11.8334 4.16667V12.1667C11.8334 12.5203 11.6929 12.8594 11.4428 13.1095C11.1928 13.3595 10.8536 13.5 10.5 13.5H2.50002C2.1464 13.5 1.80726 13.3595 1.55721 13.1095C1.30716 12.8594 1.16669 12.5203 1.16669 12.1667V4.16667Z" class="dark:stroke-[#ADADAD] stroke-[#637381]" stroke-width=1.33333 stroke-linecap=round stroke-linejoin=round></path></svg><div class=react-datepicker-wrapper><div class=react-datepicker__input-container><input type=text placeholder="Select date" class="ml-3 text-[16px] text-orange-500 bg-transparent border-none focus:outline-none focus:ring-0" value=23-08-2025></div></div></div><button data-tooltip-id=add-task-tooltip data-tooltip-content="Please enter a task" data-tooltip-place=top type=submit class="bg-orange-500 text-white px-3 py-1 rounded-md opacity-25" disabled>Add</button></div></form></div></div></div></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity exit-done" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6 exit-done" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-50 flex items-center my-4 justify-center transform px-4 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed font-dmSans inset-0 z-50 flex items-center justify-center transform px-2 sm:px-6" role=dialog aria-modal=true style=display:none></div><div class="inline-block text-left z-[9999] fixed left-[453px] bottom-[410px]"></div><div class="fixed left-64 z-20" style=top:0px></div><div class="fixed inset-0 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div><div class="fixed inset-0 bg-gray-900 bg-opacity-30 z-50 transition-opacity" aria-hidden=true style=display:none></div><div id=unlock-premium class="fixed inset-0 z-[100] flex items-center my-4 mt-40 justify-center transform px-4 sm:px-6" role=dialog style=display:none></div></div></div><div id=_rht_toaster style="position:fixed;z-index:9999;inset:40px 16px 16px;pointer-events:none"></div></div>

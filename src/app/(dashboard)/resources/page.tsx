@@ -44,6 +44,40 @@ export default async function ResourcesPage() {
         </p>
       </div>
 
+      {/* Static Featured Course */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2 border-b pb-2">
+          <BookOpen className="h-5 w-5 text-indigo-500" />
+          <h2 className="text-xl font-semibold tracking-tight">Featured Courses</h2>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <Link href="/resources/dbms" className="block h-full">
+            <Card className="h-full border-indigo-500/30 hover:border-indigo-500/80 bg-indigo-50/30 dark:bg-indigo-950/20 hover:shadow-md transition-all group cursor-pointer relative overflow-hidden">
+              <CardHeader className="p-5 pb-3">
+                <div className="flex items-start justify-between gap-4 relative z-10">
+                  <div>
+                    <CardTitle className="text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                      DBMS Complete Course
+                    </CardTitle>
+                    <CardDescription className="mt-1 text-sm text-indigo-900/60 dark:text-indigo-200/60 font-medium">
+                      94 interactive lessons
+                    </CardDescription>
+                  </div>
+                  <div className="bg-indigo-100 dark:bg-indigo-900 p-2 rounded-md">
+                    <BookOpen className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="p-5 pt-0 relative z-10">
+                <p className="text-sm text-muted-foreground mt-2">
+                  Comprehensive notes, offline access, and interview prep.
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+        </div>
+      </div>
+
       {safeResources.length === 0 ? (
         <div className="flex flex-col items-center justify-center p-12 border rounded-lg border-dashed bg-muted/10">
           <BookOpen className="h-12 w-12 text-muted-foreground mb-4 opacity-50" />

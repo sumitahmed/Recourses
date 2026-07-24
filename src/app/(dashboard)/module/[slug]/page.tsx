@@ -180,6 +180,42 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
       ) : (
         <div className="space-y-16">
           
+          {/* Custom Core CS Injections (e.g., DBMS Offline Course) */}
+          {slug === "core-cs" && (
+            <div className="space-y-8">
+              <div className="flex items-center gap-3 border-b border-border/50 pb-4">
+                <BookOpen className="size-8 text-indigo-500" />
+                <div>
+                  <h2 className="text-3xl font-extrabold tracking-tight">Featured Offline Courses</h2>
+                  <p className="text-muted-foreground text-sm mt-1">Deep dives into core computer science fundamentals.</p>
+                </div>
+              </div>
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <Link href="/resources/dbms" className="block h-full">
+                  <div className="flex flex-col h-full p-5 rounded-2xl border transition-all duration-300 shadow-sm bg-indigo-500/5 border-indigo-500/20 hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:shadow-md group">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="p-2 rounded-lg bg-indigo-500/20 text-indigo-400 group-hover:scale-110 transition-transform">
+                        <BookOpen className="size-5" />
+                      </div>
+                      <ChevronRight className="size-4 text-muted-foreground opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-indigo-400 transition-colors leading-tight">
+                      Database Management Systems
+                    </h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-4 flex-1">
+                      Complete 94-lesson offline course covering everything from SQL to NoSQL, normalization, and indexing.
+                    </p>
+                    <div className="mt-auto pt-4 border-t border-indigo-500/10">
+                      <div className="flex items-center text-xs font-semibold text-indigo-400">
+                        View Course
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          )}
+          
           {/* Preparation Sheets Section */}
           {prepSheets.length > 0 && (
             <div className="space-y-8">

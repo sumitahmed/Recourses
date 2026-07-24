@@ -60,10 +60,10 @@ export function LessonPageClient({
       );
     });
 
-    // Add copy button and wrapper to pre blocks
+    // Add copy button and wrapper to pre blocks without inline onclick (causes hydration errors in React 19)
     html = html.replace(/<pre[^>]*>([\s\S]*?)<\/pre>/g, (match) => {
       return `<div class="code-block-wrapper">
-        <button class="copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); this.innerText='Copied!'; setTimeout(()=>this.innerText='Copy', 2000)">Copy</button>
+        <button class="copy-btn" data-copy-btn>Copy</button>
         ${match}
       </div>`;
     });
@@ -97,6 +97,26 @@ export function LessonPageClient({
     panel.addEventListener("scroll", updateProgress, { passive: true });
     return () => panel.removeEventListener("scroll", updateProgress);
   }, [headings]);
+
+  // Handle copy button clicks
+  useEffect(() => {
+    const handleCopyClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.hasAttribute("data-copy-btn")) {
+        const pre = target.nextElementSibling as HTMLElement;
+        if (pre) {
+          navigator.clipboard.writeText(pre.innerText);
+          target.innerText = "Copied!";
+          setTimeout(() => {
+            if (target) target.innerText = "Copy";
+          }, 2000);
+        }
+      }
+    };
+    
+    document.addEventListener("click", handleCopyClick);
+    return () => document.removeEventListener("click", handleCopyClick);
+  }, []);
 
   // Word count -> reading time
   const wordCount = contentHtml.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
